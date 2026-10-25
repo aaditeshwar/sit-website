@@ -120,7 +120,7 @@ Matching rules:
 | Sheet | How a later submission updates an existing row |
 |---|---|
 | News, events, openings | Same title (the id is the slug of the title, at most 60 characters, cut on a word boundary) |
-| Projects | The "update to an existing project" answer: current title, page link, or id. A blank answer creates a new project. Lead and co-faculty are IITD email ids (`aseth`, or `aseth@iitd.ac.in`), separated by `;`, matched to the email column in `data/people/faculty.csv`. The import writes the person's name, so the site still shows names. A name already in the CSV still matches |
+| Projects | The "update to an existing project" answer: current title, page link, or id. A blank answer creates a new project. Lead and co-faculty are IITD email ids (`aseth`, or `aseth@iitd.ac.in`), separated by `;`, matched to the email column in `data/people/faculty.csv`. The import stores that email id. The site shows the name. A name already in the CSV still matches |
 | Alumni | Full name, matched ignoring capitalisation |
 
 On the projects tab, the form's own Status (Ongoing, Open for students, Proposed, Completed) is the project state. The moderator column `moderation` decides whether the project is shown. `initiative` is the slug of a story under `content/impact/` (`core-stack`, `gram-vaani`, `assistech`, `computer-architecture`, `cybersecurity`). The form question is “Linked to an ongoing initiative”. Leave a cell blank to keep the current CSV value.

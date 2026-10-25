@@ -217,7 +217,7 @@ test('fixture sheet import matches the expected CSVs and a second run is a no-op
   assert.deepEqual(fs.readFileSync(path.join(repoRoot, 'data/news.csv')), repoNews)
 })
 
-test('a project faculty email id is stored as the faculty name', async () => {
+test('a project faculty email id is stored as the email id', async () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'sit-faculty-'))
   const incoming = path.join(root, 'incoming')
   fs.mkdirSync(path.join(root, 'data/people'), { recursive: true })
@@ -242,9 +242,9 @@ test('a project faculty email id is stored as the faculty name', async () => {
     assert.deepEqual(result.errors, [])
     const written = fs.readFileSync(path.join(root, 'data/projects.csv'), 'utf8')
     assert.match(written, /initiative/)
-    assert.match(written, /Aaditeshwar Seth;Subodh Sharma;Someone Else/)
-    assert.doesNotMatch(written, /aseth/)
-    assert.doesNotMatch(written, /svs/)
+    assert.match(written, /aseth;svs;Someone Else/)
+    assert.doesNotMatch(written, /Aaditeshwar Seth/)
+    assert.doesNotMatch(written, /Subodh Sharma/)
   } finally {
     fs.rmSync(root, { recursive: true, force: true })
   }

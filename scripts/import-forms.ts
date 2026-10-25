@@ -129,17 +129,18 @@ function readCsvText(text: string): { columns: string[]; rows: SheetRow[] } {
   return { columns, rows }
 }
 
-type FacultyRef = { name: string }
+type FacultyRef = { name: string; id: string }
 
 function loadFacultyIndex(root: string): Map<string, FacultyRef[]> {
   const index = new Map<string, FacultyRef[]>()
   const file = path.join(root, 'data/people/faculty.csv')
   if (!fs.existsSync(file)) return index
   for (const row of readCsv(file).rows) {
-    const person = { name: (row.name ?? '').trim() }
-    if (!person.name) continue
+    const name = (row.name ?? '').trim()
+    if (!name) continue
+    const person = { name, id: emailLocalPart(row.email ?? '') ?? '' }
     addFacultyKey(index, normalisePersonName(person.name), person)
-    addFacultyKey(index, emailLocalPart(row.email ?? ''), person)
+    addFacultyKey(index, person.id, person)
   }
   return index
 }
@@ -166,7 +167,7 @@ function resolveFaculty(index: Map<string, FacultyRef[]>, value: string): string
     const token = part.trim()
     if (!token) continue
     const matches = facultyMatches(index, token)
-    const resolved = matches.length === 1 ? matches[0].name : token
+    const resolved = matches.length === 1 && matches[0].id ? matches[0].id : token
     if (!names.includes(resolved)) names.push(resolved)
   }
   return names.join(';')

@@ -43,7 +43,7 @@ The import does not use a Google Cloud account. Publish each response sheet to t
 | 5 | Status | Multiple choice: Ongoing / Open for students / Proposed — seeking collaborators or funding / Completed | yes | `status` | `ongoing` / `open-for-students` / `proposed` / `completed` |
 | 6 | One-to-two-sentence summary | Paragraph (≤ 300 chars) | yes | `summary` | |
 | 7 | Detailed description (markdown allowed) | Paragraph | no | `description_md` | generates `/research/projects/<id>` |
-| 8 | Lead and co-faculty | Short answer | yes | `faculty` | `;`-separated IITD email ids (the part before `@`, such as `aseth`). A full address also matches. The import stores the name from `faculty.csv` |
+| 8 | Lead and co-faculty | Short answer | yes | `faculty` | `;`-separated IITD email ids (the part before `@`, such as `aseth`). A full address or the person's name also matches. The import stores the email id. The site shows the name from `faculty.csv` |
 | 9 | Partners / collaborators | Short answer | no | `partners` | `;`-separated |
 | 10 | Sponsor / funding programme | Short answer | no | `sponsor` | e.g. "R-Systems CoE for Applied AI for Sustainable Systems" — exact text links the project to the CoE page |
 | 11 | Who are you looking for? | Checkboxes: PhD / MS (Research) / Pre-doc (Research Fellow) / Research assistant / Post-doc / Software engineer / Collaborators / Funding | no | `seeking` | `;`-separated: `PhD;MSR;Predoc;RA;Postdoc;Software engineer;Collaborators;Funding` |
