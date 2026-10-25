@@ -1,3 +1,4 @@
+import { A } from '../components/A'
 import { site } from '../lib/content'
 
 export function NotFoundPage() {
@@ -5,15 +6,15 @@ export function NotFoundPage() {
     <article>
       <ul className="space-y-2">
         <li>
-          <a className="text-ink underline decoration-primary/40 hover:text-primary" href="/">
+          <A className="text-ink underline decoration-primary/40 hover:text-primary" href="/">
             Home
-          </a>
+          </A>
         </li>
         {site.nav.map((item) => (
           <li key={item.href}>
-            <a className="text-ink underline decoration-primary/40 hover:text-primary" href={item.href}>
+            <A className="text-ink underline decoration-primary/40 hover:text-primary" href={item.href}>
               {item.label}
-            </a>
+            </A>
           </li>
         ))}
       </ul>

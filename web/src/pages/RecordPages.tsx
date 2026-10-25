@@ -1,3 +1,4 @@
+import { A } from '../components/A'
 import { useParams } from 'react-router-dom'
 import { CategoryBadge, StageBadge, StatusBadge } from '../components/Badge'
 import { Button } from '../components/Button'
@@ -66,7 +67,7 @@ export function ProjectPage() {
             return (
               <span key={name}>
                 {index > 0 ? ', ' : null}
-                {profile ? <a href={profile}>{label}</a> : label}
+                {profile ? <A href={profile}>{label}</A> : label}
               </span>
             )
           })}
@@ -102,7 +103,7 @@ export function NewsPage() {
       {body ? <Markdown body={body} /> : null}
       {link ? (
         <p>
-          <a href={link}>Read more</a>
+          <A href={link}>Read more</A>
         </p>
       ) : null}
     </article>

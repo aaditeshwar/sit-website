@@ -1,3 +1,4 @@
+import { A } from '../components/A'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { Breadcrumbs } from '../components/Breadcrumbs'
@@ -5,8 +6,9 @@ import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { PageHero } from '../components/PageHero'
 import { Section } from '../components/Section'
+import { normalisePath } from '../lib/content'
 import { breadcrumbsFor, metaFor } from '../lib/document'
-import { firstPaintFontCss, preloadFonts } from '../lib/fonts'
+import { fontFaceCss, fontHref, preloadFonts } from '../lib/fonts'
 import { canonicalUrl, ogImageUrl, pageDescription, pageTitle, serializeJsonLd, structuredData } from '../lib/seo'
 
 export function SiteLayout() {
@@ -20,11 +22,15 @@ export function SiteLayout() {
   const canonical = canonicalUrl(pathname)
   const image = ogImageUrl(pathname)
   const indexable = meta.path !== '/404' && meta.path !== '/search'
+  const route = normalisePath(pathname)
 
   return (
     <div className="flex min-h-screen flex-col bg-surface text-body">
       <Head
-        htmlAttributes={indexable ? undefined : { 'data-pagefind-ignore': 'all' }}
+        htmlAttributes={{
+          'data-sit-route': route,
+          ...(indexable ? {} : { 'data-pagefind-ignore': 'all' }),
+        }}
       >
         <title>{title}</title>
         {description ? <meta name="description" content={description} /> : null}
@@ -41,19 +47,19 @@ export function SiteLayout() {
         {description ? <meta name="twitter:description" content={description} /> : null}
         {image ? <meta name="twitter:image" content={image} /> : null}
         {preloadFonts.map((font) => (
-          <link key={font.family} rel="preload" href={font.href} as="font" type="font/woff2" crossOrigin="anonymous" />
+          <link key={font.family} rel="preload" href={fontHref(pathname, font.href)} as="font" type="font/woff2" crossOrigin="anonymous" />
         ))}
-        <style>{firstPaintFontCss}</style>
+        <style>{fontFaceCss(pathname)}</style>
       </Head>
       {structuredData(pathname).map((node, index) => (
         <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(node) }} />
       ))}
-      <a
+      <A
         href="#content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-surface focus:px-3 focus:py-2 focus:text-ink"
       >
         Skip to content
-      </a>
+      </A>
       <Header />
       <main id="content" className="flex-1" data-pagefind-body>
         {bare ? null : <PageHero meta={meta} />}

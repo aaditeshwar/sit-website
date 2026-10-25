@@ -83,9 +83,14 @@ function patternFor(urlPath: string): string {
   return `^${escaped}/?$`
 }
 
+/** A leading slash is the host root. A relative target follows the directory that holds this .htaccess. */
+function rewriteTarget(target: string): string {
+  return canonical(target).replace(/^\//, '')
+}
+
 export function redirectRules(): string[] {
-  const lines = mapped.map(([from, to]) => `  RewriteRule ${patternFor(from)} ${canonical(to)} [R=301,L]`)
-  lines.push('  RewriteRule ^show-news(?:/.*)?$ /news/ [R=301,L]')
+  const lines = mapped.map(([from, to]) => `  RewriteRule ${patternFor(from)} ${rewriteTarget(to)} [R=301,L]`)
+  lines.push('  RewriteRule ^show-news(?:/.*)?$ news/ [R=301,L]')
   for (const prefix of gonePrefixes) {
     lines.push(`  RewriteRule ^${prefix.replace(/^\//, '')} - [G,L]`)
   }

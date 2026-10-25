@@ -1,3 +1,4 @@
+import { A } from './A'
 import type { ReactNode } from 'react'
 import { ResponsiveImage } from './ResponsiveImage'
 
@@ -34,9 +35,9 @@ export function Card({
         {badges ? <div className="flex flex-wrap gap-2">{badges}</div> : null}
         <h2 className="font-heading text-[20px] font-semibold leading-snug text-ink">
           {href ? (
-            <a className="hover:text-primary" href={href}>
+            <A className="hover:text-primary" href={href}>
               {title}
-            </a>
+            </A>
           ) : (
             title
           )}

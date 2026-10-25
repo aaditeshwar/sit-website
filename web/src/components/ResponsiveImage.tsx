@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { showPlaceholders } from '../lib/editorial'
 import { lookupImage, type ImageVariant } from '../lib/images'
+import { usePublicHref } from './A'
 import { Pattern, patternSrc } from './Pattern'
 
 type ResponsiveImageProps = {
@@ -15,8 +16,8 @@ type ResponsiveImageProps = {
   className?: string
 }
 
-function srcSet(variants: ImageVariant[]): string {
-  return variants.map((variant) => `${variant.src} ${variant.width}w`).join(', ')
+function srcSet(variants: ImageVariant[], hrefFor: (href: string) => string): string {
+  return variants.map((variant) => `${hrefFor(variant.src)} ${variant.width}w`).join(', ')
 }
 
 export function ResponsiveImage({
@@ -88,17 +89,18 @@ function Picture({
   imageClass: string
 }) {
   const ref = useRef<HTMLImageElement>(null)
+  const hrefFor = usePublicHref()
   useEffect(() => {
     if (priority) ref.current?.setAttribute('fetchpriority', 'high')
   }, [priority])
 
   return (
     <picture className={pictureClass}>
-      {webp.length > 0 ? <source type="image/webp" srcSet={srcSet(webp)} sizes={sizes} /> : null}
+      {webp.length > 0 ? <source type="image/webp" srcSet={srcSet(webp, hrefFor)} sizes={sizes} /> : null}
       <img
         ref={ref}
-        src={fallbackSrc}
-        srcSet={fallback.length > 0 ? srcSet(fallback) : undefined}
+        src={hrefFor(fallbackSrc)}
+        srcSet={fallback.length > 0 ? srcSet(fallback, hrefFor) : undefined}
         sizes={sizes}
         width={entry!.width}
         height={entry!.height}

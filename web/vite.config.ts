@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
+import { rewriteBuiltHtml } from './src/lib/relative-url'
 
 function stripEditorial(value: unknown): unknown {
   if (typeof value === 'string') {
@@ -60,28 +61,35 @@ function pagefindDev(): Plugin {
   }
 }
 
-export default defineConfig({
-  base: '/',
+function isAppScript(src: string): boolean {
+  return /(?:^|\/)assets\/[^"?]+\.js(?:\?.*)?$/.test(src)
+}
+
+export default defineConfig(({ command }) => ({
+  // `./` keeps JS and CSS next to each HTML file. Dev stays at the Vite root.
+  base: command === 'build' ? './' : '/',
   plugins: [stripGeneratedJson(), pagefindDev(), react()],
   ssgOptions: {
     entry: 'src/main.tsx',
     dirStyle: 'nested',
     script: 'async',
     formatting: 'none',
-    beastiesOptions: {},
+    // Beasties runs after this hook and rewrites asset URLs from the site root.
+    beastiesOptions: false,
     crittersOptions: false,
-    onPageRendered(_route, html) {
+    onPageRendered(route, html) {
+      const rooted = rewriteBuiltHtml(route, html)
       let replaced = false
-      const next = html.replace(/<script\b([^>]*)><\/script>/g, (full, attrs) => {
+      const next = rooted.replace(/<script\b([^>]*)><\/script>/g, (full, attrs) => {
         const src = attrs.match(/\bsrc="([^"]+)"/)
-        if (!src || !/\btype="module"/.test(attrs) || !src[1].startsWith('/assets/')) return full
+        if (!src?.[1] || !/\btype="module"/.test(attrs) || !isAppScript(src[1])) return full
         replaced = true
         return `<script>requestAnimationFrame(function(){requestAnimationFrame(function(){var s=document.createElement("script");s.type="module";s.crossOrigin="anonymous";s.src="${src[1]}";document.body.appendChild(s)})})</script>`
       })
-      if (!replaced && html.includes('/assets/') && html.includes('type="module"')) {
+      if (!replaced && /type="module"/.test(next) && /assets\/[^"]+\.js/.test(next)) {
         throw new Error('Production page is missing the module script to defer until after first paint')
       }
       return next
     },
   },
-})
+}))

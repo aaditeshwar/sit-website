@@ -1,3 +1,4 @@
+import { A } from '../A'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
@@ -24,6 +25,7 @@ import { ResponsiveImage } from '../ResponsiveImage'
 import { TodoBadge } from '../TodoBadge'
 import type { ComponentName } from '../../lib/component-names'
 import { areas, documents, pages, routeManifest, site } from '../../lib/content'
+import { publicHref } from '../../lib/url'
 import { isEditorial, publicText } from '../../lib/editorial'
 import {
   FACULTY_CATEGORY_LABELS,
@@ -192,7 +194,7 @@ function FilterControls({
   return (
     <div className="mb-6 space-y-4">
       {search ? (
-        <form action={pathname} method="get" onSubmit={(event) => event.preventDefault()}>
+        <form action={publicHref(pathname, pathname)} method="get" onSubmit={(event) => event.preventDefault()}>
           <label className="block text-sm font-medium text-ink">
             Search
             <input
@@ -221,7 +223,7 @@ function FilterControls({
                 const pressed = params.get(field) === option.value
                 return (
                   <li key={option.value}>
-                    <a
+                    <A
                       href={withParam(pathname, params, field, option.value)}
                       aria-pressed={pressed}
                       className={`inline-flex min-h-11 items-center rounded-full border px-3 text-sm ${pressed ? 'border-primary bg-primary text-white' : 'border-line bg-surface text-ink'}`}
@@ -235,7 +237,7 @@ function FilterControls({
                       }}
                     >
                       {option.label}
-                    </a>
+                    </A>
                   </li>
                 )
               })}
@@ -294,9 +296,9 @@ function ProjectList({ rows, attrs }: { rows: Row[]; attrs: Attrs }) {
                       </div>
                       <Title className="font-heading text-[20px] font-semibold leading-snug text-ink">
                         {href ? (
-                          <a className="text-inherit no-underline hover:text-primary" href={href}>
+                          <A className="text-inherit no-underline hover:text-primary" href={href}>
                             {str(row, 'title')}
-                          </a>
+                          </A>
                         ) : (
                           str(row, 'title')
                         )}
@@ -314,9 +316,9 @@ function ProjectList({ rows, attrs }: { rows: Row[]; attrs: Attrs }) {
                             return (
                               <li key={name}>
                                 {profile ? (
-                                  <a className="text-sm text-primary" href={profile}>
+                                  <A className="text-sm text-primary" href={profile}>
                                     {label}
-                                  </a>
+                                  </A>
                                 ) : (
                                   <span className="text-sm">{label}</span>
                                 )}
@@ -515,9 +517,9 @@ function StageFlow({ items, large }: { items: Record<string, unknown>[]; large?:
               {stage ? <StageBadge stage={stage} /> : null}
               <h3 className={`mt-3 font-heading font-semibold text-ink ${large ? 'text-[28px]' : 'text-[22px]'}`}>
                 {href ? (
-                  <a className="text-inherit no-underline hover:text-primary" href={href}>
+                  <A className="text-inherit no-underline hover:text-primary" href={href}>
                     {title}
-                  </a>
+                  </A>
                 ) : (
                   title
                 )}
@@ -649,12 +651,12 @@ function StagePipeline({ attrs }: BlockProps) {
               {top.map((row) => {
                 const href = projectHref(row)
                 const title = str(row, 'title')
-                return <li key={str(row, 'id')}>{href ? <a href={href}>{title}</a> : title}</li>
+                return <li key={str(row, 'id')}>{href ? <A href={href}>{title}</A> : title}</li>
               })}
             </ul>
-            <a className="mt-4 inline-block text-sm text-primary" href={`/research/projects?stage=${stage}`}>
+            <A className="mt-4 inline-block text-sm text-primary" href={`/research/projects?stage=${stage}`}>
               View all
-            </a>
+            </A>
           </section>
         )
       })}
@@ -680,9 +682,9 @@ function ThrustTiles({ attrs }: BlockProps) {
                 <div className="min-w-0 flex-1">
                   <Icon aria-hidden="true" className="h-5 w-5 text-primary" />
                   <h3 className="font-heading text-lg font-semibold text-ink">
-                    <a className="text-inherit no-underline hover:text-primary" href={str(row, 'route')}>
+                    <A className="text-inherit no-underline hover:text-primary" href={str(row, 'route')}>
                       {str(row, 'short_title') || str(row, 'title')}
-                    </a>
+                    </A>
                   </h3>
                   <ul className="mt-1 list-disc pl-5 text-sm">
                     {stringList(row.subthemes).map((item) => (
@@ -710,9 +712,9 @@ function ThrustTiles({ attrs }: BlockProps) {
               <div className="flex flex-1 flex-col gap-3 p-5">
                 <Icon aria-hidden="true" className="h-6 w-6 text-primary" />
                 <h3 className="font-heading text-[22px] font-semibold text-ink">
-                  <a className="text-inherit no-underline hover:text-primary" href={str(row, 'route')}>
+                  <A className="text-inherit no-underline hover:text-primary" href={str(row, 'route')}>
                     {str(row, 'short_title') || str(row, 'title')}
-                  </a>
+                  </A>
                 </h3>
                 {summary ? <p><Marked value={str(row, 'summary')} /></p> : null}
                 {subthemes ? (
@@ -773,7 +775,7 @@ function LabsBlock({ attrs }: BlockProps) {
                     <Avatar name={name} size="sm" />
                   )}
                   <div>
-                    <h3 className="font-heading text-[20px] font-semibold text-ink">{website ? <a href={website}>{name}</a> : name}</h3>
+                    <h3 className="font-heading text-[20px] font-semibold text-ink">{website ? <A href={website}>{name}</A> : name}</h3>
                     <p className="mt-1 text-sm">{str(row, 'summary')}</p>
                     {stringList(row.faculty).length ? <p className="mt-2 text-sm">{stringList(row.faculty).join(', ')}</p> : null}
                   </div>
@@ -816,9 +818,9 @@ function PersonName({ name, profile }: { name: string; profile?: string }) {
   const href = publicText(profile) || facultyProfile(name)
   if (!href) return <span>{name}</span>
   return (
-    <a className="text-inherit no-underline hover:text-primary" href={href}>
+    <A className="text-inherit no-underline hover:text-primary" href={href}>
       {name}
-    </a>
+    </A>
   )
 }
 
@@ -993,7 +995,7 @@ function FeedCard({ row }: { row: Row }) {
         {tag ? ` · ${titleCase(tag)}` : ''}
       </p>
       <h3 className="mt-1 font-heading text-[20px] font-semibold text-ink">
-        {href ? <a href={href}>{str(row, 'title')}</a> : str(row, 'title')}
+        {href ? <A href={href}>{str(row, 'title')}</A> : str(row, 'title')}
       </h3>
       {publicText(str(row, 'summary')) ? (
         <p className="mt-2 text-sm">
@@ -1053,7 +1055,7 @@ function NewsList({ attrs }: BlockProps) {
             else next.set('page', String(number))
             const query = next.toString()
             return (
-              <a
+              <A
                 key={number}
                 href={query ? `${pathname}?${query}` : pathname}
                 aria-current={number === page ? 'page' : undefined}
@@ -1064,7 +1066,7 @@ function NewsList({ attrs }: BlockProps) {
                 }}
               >
                 {number}
-              </a>
+              </A>
             )
           })}
         </nav>
@@ -1114,7 +1116,7 @@ function EventsBlock({ attrs }: BlockProps) {
                       <p className="text-sm">
                         <span className="rounded-full border border-line px-2 py-0.5 text-[12px]">{titleCase(str(row, 'type'))}</span>
                       </p>
-                      <h3 className="font-heading text-[20px] font-semibold text-ink">{href ? <a href={href}>{str(row, 'title')}</a> : str(row, 'title')}</h3>
+                      <h3 className="font-heading text-[20px] font-semibold text-ink">{href ? <A href={href}>{str(row, 'title')}</A> : str(row, 'title')}</h3>
                       {str(row, 'venue') ? <p className="text-sm">{str(row, 'venue')}</p> : null}
                       <p className="mt-1 text-sm">{str(row, 'summary')}</p>
                     </div>
@@ -1176,13 +1178,13 @@ function Opportunities({ attrs }: BlockProps) {
       {columns.map((column) => (
         <section key={column.href}>
           <h3 className="font-heading text-[22px] font-semibold text-ink">
-            <a href={column.href}>{column.title}</a>
+            <A href={column.href}>{column.title}</A>
           </h3>
           <ul className="mt-3 space-y-3">
             {column.rows.map((row) => {
               const label = str(row, 'title') || str(row, 'item')
               const href = str(row, 'route') || publicText(str(row, 'link')) || publicText(str(row, 'apply_url')) || projectHref(row)
-              return <li key={label}>{href ? <a href={href}>{label}</a> : label}</li>
+              return <li key={label}>{href ? <A href={href}>{label}</A> : label}</li>
             })}
           </ul>
         </section>
@@ -1214,7 +1216,7 @@ function AdmissionsPanel({ attrs }: BlockProps) {
               return (
                 <li key={`${cycle}-${str(row, 'item')}`} className={prominent && date ? 'grid gap-3 sm:grid-cols-[9rem_minmax(0,1fr)] sm:items-center' : undefined}>
                   {date ? <p className={prominent ? 'font-heading text-[24px] font-semibold leading-tight text-ink' : 'text-sm'}>{date}</p> : null}
-                  {href ? <a href={href}>{str(row, 'item')}</a> : <p>{str(row, 'item')}</p>}
+                  {href ? <A href={href}>{str(row, 'item')}</A> : <p>{str(row, 'item')}</p>}
                 </li>
               )
             })}
@@ -1234,10 +1236,10 @@ function IncentiveHighlights({ attrs }: BlockProps) {
         const Icon = INCENTIVE_ICONS[index] ?? Award
         return (
           <li key={tile.text}>
-            <a href={tile.href} className="flex h-full flex-col gap-3 rounded-lg border border-line p-4 text-inherit no-underline hover:border-primary">
+            <A href={tile.href} className="flex h-full flex-col gap-3 rounded-lg border border-line p-4 text-inherit no-underline hover:border-primary">
               <Icon aria-hidden="true" className="h-6 w-6 text-primary" />
               <span>{tile.text}</span>
-            </a>
+            </A>
           </li>
         )
       })}
@@ -1252,7 +1254,7 @@ function AudienceCards({ items }: BlockProps) {
         <li key={str(item, 'title')}>
           <article className="h-full rounded-lg border border-line p-6">
             <h2 className="font-heading text-[24px] font-semibold text-ink">
-              <a href={str(item, 'href')}>{str(item, 'title')}</a>
+              <A href={str(item, 'href')}>{str(item, 'title')}</A>
             </h2>
             <ul className="mt-4 list-disc space-y-2 pl-5">
               {stringList(item.points).map((point) => (
@@ -1273,7 +1275,7 @@ function ProgrammeCards({ items }: BlockProps) {
         <li key={str(item, 'title')}>
           <article className="h-full rounded-lg border border-line p-6">
             <h2 className="font-heading text-[24px] font-semibold text-ink">
-              <a href={str(item, 'href')}>{str(item, 'title')}</a>
+              <A href={str(item, 'href')}>{str(item, 'title')}</A>
             </h2>
             <p className="mt-3">{str(item, 'text')}</p>
             <ul className="mt-4 flex list-none flex-wrap gap-2 p-0">
@@ -1339,7 +1341,7 @@ function PartnerOptions({ items }: BlockProps) {
         <li key={str(item, 'title')}>
           <article className="h-full rounded-lg border border-line p-5">
             <h3 className="font-heading text-[20px] font-semibold text-ink">
-              <a href={str(item, 'href')}>{str(item, 'title')}</a>
+              <A href={str(item, 'href')}>{str(item, 'title')}</A>
             </h3>
             <p className="mt-2">{str(item, 'text')}</p>
           </article>
@@ -1356,11 +1358,11 @@ function PeopleTiles({ items }: BlockProps) {
         const count = select(str(item, 'count_source'), str(item, 'count_filter') ? { filter: str(item, 'count_filter') } : {}).length
         return (
           <li key={str(item, 'title')}>
-            <a href={str(item, 'href')} className="flex h-full flex-col gap-3 rounded-lg border border-line p-4 text-inherit no-underline hover:border-primary">
+            <A href={str(item, 'href')} className="flex h-full flex-col gap-3 rounded-lg border border-line p-4 text-inherit no-underline hover:border-primary">
               <ResponsiveImage src={str(item, 'icon')} alt="" seed={str(item, 'title')} className="h-12 w-12 object-contain" sizes="48px" />
               <span className="font-heading text-[20px] font-semibold text-ink">{str(item, 'title')}</span>
               <span className="font-heading text-[28px] text-primary">{count}</span>
-            </a>
+            </A>
           </li>
         )
       })}
@@ -1389,7 +1391,7 @@ function DocumentsBlock({ items }: BlockProps) {
             ) : null}
             <div>
               {known ? (
-                <a href={`/${file.replace(/^\//, '')}`}>{str(item, 'title')}</a>
+                <A href={`/${file.replace(/^\//, '')}`}>{str(item, 'title')}</A>
               ) : (
                 <p className="font-medium text-ink">{str(item, 'title')}</p>
               )}
@@ -1412,9 +1414,9 @@ function ContactRoutes({ items }: BlockProps) {
     <ul className="space-y-4">
       {items.map((item) => (
         <li key={str(item, 'label')}>
-          <a className="font-medium" href={str(item, 'href')}>
+          <A className="font-medium" href={str(item, 'href')}>
             {str(item, 'label')}
-          </a>
+          </A>
           <p>{str(item, 'text')}</p>
         </li>
       ))}
@@ -1450,7 +1452,7 @@ function PartnerLogos({ attrs }: BlockProps) {
         ) : (
           <span>{name}</span>
         )
-        return <li key={name}>{href ? <a href={href}>{mark}</a> : mark}</li>
+        return <li key={name}>{href ? <A href={href}>{mark}</A> : mark}</li>
       })}
     </ul>
   )
@@ -1515,11 +1517,11 @@ function ContactCard({ attrs }: BlockProps) {
     <address className="not-italic">
       <p className="whitespace-pre-line">{attrs.source ? site.contact.address : site.contact.address}</p>
       <p className="mt-3">
-        <a href={`tel:${site.contact.phone.replace(/[^\d+]/g, '')}`}>{site.contact.phone}</a>
+        <A href={`tel:${site.contact.phone.replace(/[^\d+]/g, '')}`}>{site.contact.phone}</A>
       </p>
       {email ? (
         <p className="mt-1">
-          <a href={`mailto:${email}`}>{email}</a> {isEditorial(site.contact.email) ? <TodoBadge /> : null}
+          <A href={`mailto:${email}`}>{email}</A> {isEditorial(site.contact.email) ? <TodoBadge /> : null}
         </p>
       ) : null}
     </address>

@@ -1,3 +1,4 @@
+import { A } from './A'
 import type { Crumb } from '../lib/document'
 
 export function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
@@ -19,9 +20,9 @@ export function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
                   {crumb.label}
                 </span>
               ) : (
-                <a className="text-body hover:text-primary" href={crumb.href}>
+                <A className="text-body hover:text-primary" href={crumb.href}>
                   {crumb.label}
-                </a>
+                </A>
               )}
             </li>
           )

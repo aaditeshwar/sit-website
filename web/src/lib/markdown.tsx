@@ -1,3 +1,4 @@
+import { A } from '../components/A'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import ReactMarkdown, { type Components } from 'react-markdown'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -25,16 +26,16 @@ function classNames(value: unknown): string {
 function MarkdownLink({ href, children, className }: { href?: string; children?: ReactNode; className?: string }) {
   if (classNames(className).includes('heading-anchor')) {
     return (
-      <a href={href} className="heading-anchor">
+      <A href={href} className="heading-anchor">
         {children}
-      </a>
+      </A>
     )
   }
   if (href && isEditorial(href) && !showEditorial) return <>{children}</>
   return (
-    <a href={href} className="text-primary underline decoration-primary/40 underline-offset-2">
+    <A href={href} className="text-primary underline decoration-primary/40 underline-offset-2">
       {children}
-    </a>
+    </A>
   )
 }
 

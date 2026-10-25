@@ -212,13 +212,66 @@ corepack pnpm install
 corepack pnpm build
 ```
 
-`corepack pnpm install` is only needed when dependencies changed. `corepack pnpm build` writes `web/dist/`. That folder is the whole website: one directory per page with an `index.html`, plus `assets/`, `images/`, `documents/`, `pagefind/`, `sitemap.xml`, `robots.txt`, `404/`, and `.htaccess`.
+`corepack pnpm install` is only needed when dependencies changed. `corepack pnpm build` writes `web/dist/`. That folder is the whole website: one directory per page with an `index.html`, plus `assets/`, `images/`, `_img/`, `documents/`, `pagefind/`, `sitemap.xml`, `robots.txt`, `404/`, and `.htaccess`.
 
-Apache needs `AllowOverride All` (or the equivalent in the vhost) so `.htaccess` can run. Confirm that with CSC. The file forces HTTPS and the host `sit.iitd.ac.in`, adds a trailing slash, redirects old URLs, and serves `/404/index.html` for unknown paths. The site is mounted at the domain root (`base` is `/`).
+Photographs and banners are files in `web/dist/_img/<hash>-<width>.webp` (and a JPEG or PNG fallback). The HTML refers to them relative to the page (`../_img/...` on a nested page, `_img/...` on the home page). The build creates those files from `assets/images/`. The original files are also copied to `web/dist/images/`. A page can load while every picture is broken when `_img/` is missing or Apache cannot read it.
 
-Point Apache at `web/dist/` in that checkout, or copy `web/dist/` to the document root on the same machine. Before building, copy the current `web/dist/` to a dated directory if you want a rollback. To roll back, point the document root at that copy.
+After each build, let Apache read the new files:
 
-The Apache rules that ship with the build are authored in `web/public/.htaccess`. The build copies them to `web/dist/.htaccess` and fills the redirect block from `scripts/redirects.ts`.
+```bash
+chmod o+x /home/aseth /home/aseth/core-stack /home/aseth/core-stack/sit-website /home/aseth/core-stack/sit-website/web
+chmod -R o+rX /home/aseth/core-stack/sit-website/web/dist
+```
+
+Apache runs as `www-data` and cannot enter `/home/aseth` until those directories are traversable. Confirm `web/dist/_img/` contains files before reloading Apache.
+
+### Apache
+
+The checkout on the server is `/home/aseth/core-stack/sit-website`. Apache must serve `web/dist`, not the repository root. The same build works at the domain root (`https://sit.iitd.ac.in/`) and under a folder (`https://act4d.iitd.ac.in/sit-website/`). Pages, pictures, scripts, and styles use paths relative to the page, and the router reads the folder from the address. Do not set Vite `base` to a prefix.
+
+Enable the modules used by the generated `.htaccess`:
+
+```bash
+sudo a2enmod rewrite headers expires deflate
+```
+
+Create `/etc/apache2/sites-available/sit.iitd.ac.in.conf`:
+
+```apache
+<VirtualHost *:80>
+    ServerName sit.iitd.ac.in
+    DocumentRoot /home/aseth/core-stack/sit-website/web/dist
+
+    <Directory /home/aseth/core-stack/sit-website/web/dist>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/sit-error.log
+    CustomLog ${APACHE_LOG_DIR}/sit-access.log combined
+</VirtualHost>
+```
+
+`AllowOverride All` is required. The build writes `web/dist/.htaccess` from `web/public/.htaccess` and fills the redirect block from `scripts/redirects.ts`. Redirect targets have no leading slash, so they stay inside whichever folder holds `web/dist`. The file forces `https` on the current host, adds a trailing slash, redirects old URLs, and rewrites unknown paths to `404/index.html`. The rule that sends every host to `https://sit.iitd.ac.in` is commented out. Uncomment it only when this folder is the document root of `sit.iitd.ac.in`. Leave it commented on `act4d.iitd.ac.in` and on any preview that is not the public site.
+
+If this machine terminates TLS, add a `<VirtualHost *:443>` with the same `DocumentRoot` and `Directory`, plus the certificate paths from CSC (`SSLEngine on`, `SSLCertificateFile`, `SSLCertificateKeyFile`). If CSC’s proxy already terminates TLS, keep only the port 80 block and point that proxy at this host.
+
+Enable the site:
+
+```bash
+sudo a2ensite sit.iitd.ac.in
+sudo apache2ctl configtest
+sudo systemctl reload apache2
+```
+
+If this host should serve only SIT, disable the default site with `sudo a2dissite 000-default` before the reload. If CSC already has a vhost for `sit.iitd.ac.in`, change that file’s `DocumentRoot` and `Directory` instead of adding a second one.
+
+Before building, copy the current `web/dist/` to a dated directory if you want a rollback. To roll back, point the document root at that copy.
+
+After `git pull` and `corepack pnpm build`, view source on a nested page such as `/about/`. A picture should be `../_img/...` and the stylesheet `../assets/...`, not `/_img/...` or `/assets/...` from the host root. The home page uses `assets/...` and `_img/...` with no leading slash. Those resolve inside `/sit-website/` on the preview and inside `/` on the public site.
+
+A one-off alternative is to set `base: '/sit-website/'` in `web/vite.config.ts` and rebuild. Every asset URL then starts with `/sit-website/`, which fixes the preview and breaks the site the moment it moves to `https://sit.iitd.ac.in/` with no prefix. The relative build above replaces that. Do not leave a hardcoded prefix in the config.
 
 ## 8. Regular maintenance
 
@@ -243,3 +296,4 @@ Search, the sitemap, and the social-card images are produced by `corepack pnpm b
 - The import prints `error:` lines and does not treat that run as clean. `warning:` lines (no consent, an unmatched superseded row, a missing image) leave the rest of the import in place.
 - `No published sheet URLs are set` means every line in `forms/published-sheets.env` is blank. The CSVs are left untouched. A line that names one form and is blank skips that form and imports the others.
 - A form row that should have updated a project created a second project instead: the update answer did not match the current title or id. Set it to the existing id (the first column of `data/projects.csv`) and import again. Mark the duplicate `superseded` if it was published.
+- The HTML loads and the pictures do not. View source. A `src` or `href` that starts with `/_img/` or `/assets/` is asking the host root for a file that lives next to the HTML. Pull the current tree and run `corepack pnpm build` again so those paths are relative (`../_img/...` on a nested page). Then run the `chmod` commands in section 7. If the paths are already relative and the files 404, `web/dist/_img/` is missing or Apache cannot read it.

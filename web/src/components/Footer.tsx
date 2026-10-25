@@ -1,3 +1,4 @@
+import { A } from './A'
 import { site } from '../lib/content'
 import { isEditorial, publicText, showEditorial } from '../lib/editorial'
 import { formatBuildDate } from '../lib/format'
@@ -20,9 +21,9 @@ export function Footer() {
     <footer className="bg-dark text-white" data-pagefind-ignore>
       <div className="mx-auto grid max-w-page gap-10 px-4 py-14 md:px-6 lg:grid-cols-[minmax(0,1.3fr)_repeat(3,minmax(0,1fr))]">
         <div className="space-y-4">
-          <a href="/" aria-label={site.name} className="inline-block rounded-md bg-white px-2 py-1">
+          <A href="/" aria-label={site.name} className="inline-block rounded-md bg-white px-2 py-1">
             <ResponsiveImage src={site.logo} alt="" seed="logo" sizes="48px" className="h-11 w-11 object-cover object-left" />
-          </a>
+          </A>
           <p className="max-w-sm text-sm leading-relaxed text-white/80">{site.tagline}</p>
         </div>
         {site.footer.columns.map((column) => (
@@ -31,9 +32,9 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {column.links.map((link) => (
                 <li key={link.href}>
-                  <a className="text-sm text-white/80 hover:text-white hover:underline" href={link.href}>
+                  <A className="text-sm text-white/80 hover:text-white hover:underline" href={link.href}>
                     {link.label}
-                  </a>
+                  </A>
                 </li>
               ))}
             </ul>
@@ -45,9 +46,9 @@ export function Footer() {
           <div className="space-y-2 text-sm text-white/80">
             <p>{site.contact.address}</p>
             <p>
-              <a className="hover:text-white hover:underline" href={`tel:${site.contact.phone.replace(/[^\d+]/g, '')}`}>
+              <A className="hover:text-white hover:underline" href={`tel:${site.contact.phone.replace(/[^\d+]/g, '')}`}>
                 {site.contact.phone}
-              </a>
+              </A>
             </p>
             {email ? (
               <p className="flex flex-wrap items-center gap-2">
@@ -55,9 +56,9 @@ export function Footer() {
                 {emailPending ? (
                   <span>{email}</span>
                 ) : (
-                  <a className="hover:text-white hover:underline" href={`mailto:${email}`}>
+                  <A className="hover:text-white hover:underline" href={`mailto:${email}`}>
                     {email}
-                  </a>
+                  </A>
                 )}
               </p>
             ) : null}
@@ -65,9 +66,9 @@ export function Footer() {
               <ul className="flex gap-4 pt-2">
                 {socials.map(([label, href]) => (
                   <li key={label}>
-                    <a className="hover:text-white hover:underline" href={href}>
+                    <A className="hover:text-white hover:underline" href={href}>
                       {label}
-                    </a>
+                    </A>
                   </li>
                 ))}
               </ul>

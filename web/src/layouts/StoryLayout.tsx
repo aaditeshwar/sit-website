@@ -1,3 +1,4 @@
+import { A } from '../components/A'
 import { StageBadge } from '../components/Badge'
 import { Breadcrumbs } from '../components/Breadcrumbs'
 import { Card } from '../components/Card'
@@ -69,9 +70,9 @@ export function StoryLayout({ story }: { story: Story }) {
             ) : null}
             {area ? (
               <p className="mt-3">
-                <a className="text-white underline decoration-white/40 underline-offset-2" href={area.route}>
+                <A className="text-white underline decoration-white/40 underline-offset-2" href={area.route}>
                   {area.short_title}
-                </a>
+                </A>
               </p>
             ) : null}
           </div>
@@ -87,9 +88,9 @@ export function StoryLayout({ story }: { story: Story }) {
           <ul className="mx-auto flex max-w-page list-none gap-4 overflow-x-auto px-4 py-3 md:px-6">
             {sections.map((section) => (
               <li key={section.id} className="shrink-0">
-                <a className="text-sm text-ink no-underline hover:text-primary" href={`#${section.id}`}>
+                <A className="text-sm text-ink no-underline hover:text-primary" href={`#${section.id}`}>
                   {section.label}
-                </a>
+                </A>
               </li>
             ))}
           </ul>
@@ -122,7 +123,7 @@ export function StoryLayout({ story }: { story: Story }) {
                         {initials(label)}
                       </span>
                     )}
-                    {profile ? <a href={profile}>{label}</a> : <span className="text-ink">{label}</span>}
+                    {profile ? <A href={profile}>{label}</A> : <span className="text-ink">{label}</span>}
                   </li>
                 )
               })}
@@ -143,7 +144,7 @@ export function StoryLayout({ story }: { story: Story }) {
                     {partner.role ? <span>{partner.role}</span> : null}
                   </span>
                 )
-                return <li key={partner.name}>{href ? <a className="no-underline" href={href}>{chip}</a> : chip}</li>
+                return <li key={partner.name}>{href ? <A className="no-underline" href={href}>{chip}</A> : chip}</li>
               })}
             </ul>
           </section>
@@ -157,7 +158,7 @@ export function StoryLayout({ story }: { story: Story }) {
                 if (!href) return null
                 return (
                   <li key={href}>
-                    <a href={href}>{link.label}</a>
+                    <A href={href}>{link.label}</A>
                   </li>
                 )
               })}

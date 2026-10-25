@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
+import { pagefindRoot } from '../lib/url'
 
 type PagefindConstructor = new (options: {
   element: HTMLElement
+  bundlePath?: string
   showSubResults?: boolean
   showImages?: boolean
   pageSize?: number
@@ -24,10 +26,11 @@ export function SearchPage() {
     const query = new URLSearchParams(window.location.search).get('q') ?? ''
 
     async function mount() {
+      const bundle = pagefindRoot()
       if (!document.querySelector('link[data-pagefind-ui]')) {
         const css = document.createElement('link')
         css.rel = 'stylesheet'
-        css.href = '/pagefind/pagefind-ui.css'
+        css.href = `${bundle}pagefind-ui.css`
         css.dataset.pagefindUi = 'true'
         document.head.appendChild(css)
         await new Promise<void>((resolve) => {
@@ -38,7 +41,7 @@ export function SearchPage() {
       if (!window.PagefindUI) {
         await new Promise<void>((resolve, reject) => {
           const script = document.createElement('script')
-          script.src = '/pagefind/pagefind-ui.js'
+          script.src = `${bundle}pagefind-ui.js`
           script.onload = () => resolve()
           script.onerror = () => reject(new Error('pagefind missing'))
           document.body.appendChild(script)
@@ -46,7 +49,7 @@ export function SearchPage() {
       }
       if (cancelled || !root || !window.PagefindUI) return
       root.replaceChildren()
-      new window.PagefindUI({ element: root, showSubResults: true, showImages: false, pageSize: 20 })
+      new window.PagefindUI({ element: root, bundlePath: bundle, showSubResults: true, showImages: false, pageSize: 20 })
       if (!query) return
       const input = root.querySelector('input')
       if (!input) return

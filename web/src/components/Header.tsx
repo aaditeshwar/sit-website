@@ -1,7 +1,9 @@
+import { A } from './A'
 import { Menu, Search, X } from 'lucide-react'
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react'
 import { useLocation } from 'react-router-dom'
 import { normalisePath, site } from '../lib/content'
+import { publicHref } from '../lib/url'
 import { featuredFor } from '../lib/document'
 import { StageBadge } from './Badge'
 import { Button } from './Button'
@@ -163,9 +165,9 @@ export function Header() {
       <div className="bg-dark text-white">
         <nav aria-label="Utility" className="mx-auto flex h-8 max-w-page items-center gap-4 px-4 text-[13px] md:px-6">
           {site.utility_nav.map((item) => (
-            <a key={item.href} className="hover:underline" href={item.href}>
+            <A key={item.href} className="hover:underline" href={item.href}>
               {item.label}
-            </a>
+            </A>
           ))}
         </nav>
       </div>
@@ -173,7 +175,7 @@ export function Header() {
         <div
           className={`mx-auto flex max-w-page items-center gap-3 px-4 md:px-6 ${shrunk ? 'py-2' : 'py-3'} transition-[padding] duration-200`}
         >
-          <a
+          <A
             href="/"
             aria-label={site.name}
             aria-current={path === '/' ? 'page' : undefined}
@@ -196,14 +198,14 @@ export function Header() {
               </span>
               <span className={`block font-medium ${shrunk ? 'text-[10px]' : 'text-[11px] sm:text-xs'}`}>IIT Delhi</span>
             </span>
-          </a>
+          </A>
           <nav aria-label="Primary" className="hidden flex-1 items-center justify-center gap-1 lg:flex">
             {site.nav.map((item, index) => {
               const hasChildren = Boolean(item.children?.length)
               const active =
                 covers(item.href, path) || item.children?.some((child) => covers(child.href, path))
               return (
-                <a
+                <A
                   key={item.href}
                   ref={(node) => {
                     topRefs.current[index] = node
@@ -217,11 +219,11 @@ export function Header() {
                   className={`rounded-md px-2.5 py-2 text-sm font-medium ${active ? 'text-primary' : 'text-ink'} hover:text-primary`}
                 >
                   {item.label}
-                </a>
+                </A>
               )
             })}
           </nav>
-          <form action="/search" method="get" role="search" className="ml-auto flex items-center gap-1" onMouseEnter={() => setOpenIndex(null)}>
+          <form action={publicHref(pathname, '/search')} method="get" role="search" className="ml-auto flex items-center gap-1" onMouseEnter={() => setOpenIndex(null)}>
             <label htmlFor="site-search" className="sr-only">
               Search
             </label>
@@ -282,18 +284,18 @@ export function Header() {
               <ul className="grid max-w-xl content-start gap-x-6 gap-y-1 sm:grid-cols-2">
                 {openItem.children.map((child) => (
                   <li key={child.href}>
-                    <a
+                    <A
                       href={child.href}
                       aria-current={path === child.href ? 'page' : undefined}
                       className="block rounded-md px-3 py-2 text-sm font-medium text-ink hover:bg-surface-alt hover:text-primary"
                     >
                       {child.label}
-                    </a>
+                    </A>
                   </li>
                 ))}
               </ul>
               {featured ? (
-                <a href={featured.href} className="block rounded-lg border border-line hover:border-primary">
+                <A href={featured.href} className="block rounded-lg border border-line hover:border-primary">
                   <div className="relative aspect-[3/2] overflow-hidden rounded-t-lg bg-surface-alt">
                     <ResponsiveImage
                       src={featured.image}
@@ -309,7 +311,7 @@ export function Header() {
                     <p className="font-heading text-[18px] font-semibold leading-snug text-ink">{featured.title}</p>
                     {featured.text ? <p className="line-clamp-3 text-sm leading-relaxed">{featured.text}</p> : null}
                   </div>
-                </a>
+                </A>
               ) : null}
             </div>
           ) : null}
@@ -336,7 +338,7 @@ export function Header() {
             </button>
           </div>
           <nav aria-label="Primary" className="flex-1 overflow-y-auto px-4 py-4">
-            <form action="/search" method="get" role="search" className="mb-4">
+            <form action={publicHref(pathname, '/search')} method="get" role="search" className="mb-4">
               <label htmlFor="menu-search" className="sr-only">
                 Search
               </label>
@@ -372,26 +374,26 @@ export function Header() {
                           <ul id={`mobile-section-${index}`} className="space-y-1 pb-3">
                             {item.children?.map((child) => (
                               <li key={child.href}>
-                                <a
+                                <A
                                   href={child.href}
                                   aria-current={path === child.href ? 'page' : undefined}
                                   className="block rounded-md px-2 py-2 text-sm text-ink hover:bg-surface-alt hover:text-primary"
                                 >
                                   {child.label}
-                                </a>
+                                </A>
                               </li>
                             ))}
                           </ul>
                         ) : null}
                       </>
                     ) : (
-                      <a
+                      <A
                         href={item.href}
                         aria-current={path === item.href ? 'page' : undefined}
                         className="flex min-h-11 items-center text-base font-medium text-ink"
                       >
                         {item.label}
-                      </a>
+                      </A>
                     )}
                   </li>
                 )

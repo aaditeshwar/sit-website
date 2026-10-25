@@ -14,7 +14,7 @@
     "build": "tsx scripts/build-content.ts && tsx scripts/images.ts && tsx scripts/og.ts && tsx scripts/sitemap.ts && tsx scripts/redirects.ts && corepack pnpm --filter web build && corepack pnpm exec pagefind --site web/dist && tsx scripts/verify-dist.ts",
     "preview": "corepack pnpm --filter web preview",
     "import:forms": "tsx scripts/import-forms.ts",
-    "test": "tsx --test scripts/redirects.test.ts scripts/import-forms.test.ts"
+    "test": "tsx --test scripts/public-href.test.ts scripts/redirects.test.ts scripts/import-forms.test.ts"
   },
   "devDependencies": {
     "@types/js-yaml": "4.0.9",

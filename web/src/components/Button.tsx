@@ -1,3 +1,4 @@
+import { A } from './A'
 import type { ReactNode } from 'react'
 
 const VARIANTS = {
@@ -18,11 +19,11 @@ export function Button({
   className?: string
 }) {
   return (
-    <a
+    <A
       href={href}
       className={`inline-flex min-h-11 items-center justify-center rounded-md px-4 text-sm font-medium no-underline ${VARIANTS[variant]} ${className}`}
     >
       {children}
-    </a>
+    </A>
   )
 }

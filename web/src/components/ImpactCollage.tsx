@@ -1,3 +1,4 @@
+import { A } from './A'
 import { ResponsiveImage } from './ResponsiveImage'
 import { select } from '../lib/query'
 import { str } from '../lib/fields'
@@ -10,7 +11,7 @@ export function ImpactCollage() {
     <ul className="grid list-none grid-cols-2 gap-3 p-0" aria-label="Impact stories">
       {stories.map((story) => (
         <li key={str(story, 'slug')}>
-          <a href={str(story, 'route')} className="relative block aspect-[4/3] overflow-hidden rounded-lg bg-surface-alt">
+          <A href={str(story, 'route')} className="relative block aspect-[4/3] overflow-hidden rounded-lg bg-surface-alt">
             <ResponsiveImage
               src={str(story, 'card_image') || undefined}
               alt=""
@@ -19,7 +20,7 @@ export function ImpactCollage() {
               sizes="(min-width: 1024px) 280px, 45vw"
             />
             <span className="sr-only">{str(story, 'title')}</span>
-          </a>
+          </A>
         </li>
       ))}
     </ul>

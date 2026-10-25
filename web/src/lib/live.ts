@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { publicHref } from './url'
 
 export function useReadySearch() {
   const { pathname } = useLocation()
@@ -18,7 +19,8 @@ export function useReadySearch() {
 
   function setParams(next: URLSearchParams, mode: 'push' | 'replace' = 'push') {
     const query = next.toString()
-    const url = query ? `${pathname}?${query}` : pathname
+    const target = query ? `${pathname}?${query}` : pathname
+    const url = publicHref(pathname, target)
     if (mode === 'replace') window.history.replaceState(null, '', url)
     else window.history.pushState(null, '', url)
     setSearch(query ? `?${query}` : '')
