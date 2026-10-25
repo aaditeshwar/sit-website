@@ -1,13 +1,13 @@
 # Google Forms for regular updates
 
-Five forms feed the site's frequently changing content. Each form writes to its own response sheet. A moderator sets `status` on a row, and an import script turns `published` rows into the CSVs under `data/`.
+Five forms feed the site's frequently changing content. Each form writes to its own response sheet. A moderator sets the same visibility value the CSV stores, and the import copies that value into the files under `data/`.
 
-The import does not use a Google Cloud account. Publish each response sheet to the web and paste that link in `forms/published-sheets.env`. Optional questions may be left off the form. The title (for alumni, the full name) is the match key. A different title is a new item; the previous row stays until its own sheet row hides it. `published` adds or updates the row and shows it. `rejected` and `superseded` keep an existing row and hide it. `pending` updates the other fields of an existing row and leaves it shown or hidden as it already was. A blank cell keeps the current value. A cell containing only `-` clears that value. A file-upload image is downloaded when that Drive file is shared as anyone with the link. The same image question also has a URL field. A site path such as `/images/research/photo.png` keeps the file already in the repository. A blank image cell keeps the current file. A link that points at a page on this site is stored as a path, such as `/academics/research-fellows`.
+The import does not use a Google Cloud account. Publish each response sheet to the web and paste that link in `forms/published-sheets.env`. Optional questions may be left off the form. The title (for alumni, the full name) is the match key. A different title is a new item; the previous row stays until its own sheet row hides it. A blank visibility cell updates the other fields of an existing row and leaves it shown or hidden as it already was. A new title with a blank or hidden value is not added. A blank cell keeps the current value. A cell containing only `-` clears that value. A file-upload image is downloaded when that Drive file is shared as anyone with the link. The same image question also has a URL field. A site path such as `/images/research/photo.png` keeps the file already in the repository. A blank image cell keeps the current file. A link that points at a page on this site is stored as a path, such as `/academics/research-fellows`. Dropdown answers are the same tokens the CSV stores. Older labels, such as `Announcement` or `Call for proposals`, still match.
 
 **Rules for every form**
 - Leave respondent email **off**. The published sheet is world-readable, so an email column would be public.
-- Each Sheet tab gets three moderator columns added to the right of the form responses: `status` (`pending` / `published` / `rejected` / `superseded`, default `pending`), `edited_*` overrides (optional, see below), and `moderator_note`.
-- `published` shows the row. `rejected` and `superseded` hide an existing row and leave it in the CSV. `pending` updates the other fields and does not change whether the row is shown. A blank status is treated as `pending`.
+- Each Sheet tab gets moderator columns added to the right of the form responses: `edited_*` overrides (optional, see below) and `moderator_note`. News, events, and alumni also have `status` (`published` or `draft`). Openings use `status` (`open`, `closed`, or `draft`). Projects use `moderation` (`TRUE` or `FALSE`), because `status` is already the project's own state.
+- `published`, `open`, and `TRUE` show the row. `draft` and `FALSE` keep an existing row and hide it. `closed` keeps an opening in the list and marks it closed. A blank cell does not change whether the row is shown.
 - If a moderator needs to fix a field, they type the corrected value in a column named `edited_<column>`. The import prefers `edited_x` over `x`, so original submissions are never overwritten.
 - Images: use a **file-upload question** and share each file as anyone with the link, **or** an image URL anyone can open. Max 10 MB, image types only.
 
@@ -54,7 +54,7 @@ The import does not use a Google Cloud account. Publish each response sheet to t
 | 16 | Linked to an ongoing initiative | Dropdown: CoRE stack / Gram Vaani / Assistech / Computer architecture / Cybersecurity | no | `initiative` | `core-stack;gram-vaani;assistech;computer-architecture;cybersecurity` |
 | — | (moderator) | — | — | `status` (moderation), `featured`, `published` | moderation status lives in the Sheet column `moderation`, to avoid clashing with the project's own `status` |
 
-**Note:** for the projects tab the moderator column is called **`moderation`** (`pending` / `published` / `rejected` / `superseded`), because `status` is already a project field.
+**Note:** for the projects tab the moderator column is called **`moderation`** (`TRUE` shows the project, `FALSE` hides it), because `status` is already a project field. The import writes that value into the CSV column `published`.
 
 ## 3. Event → `data/events.csv`
 
@@ -69,7 +69,7 @@ The import does not use a Google Cloud account. Publish each response sheet to t
 | 7 | Registration / details link | URL | no | `registration_url` |
 | 8 | Poster or image | File upload | no | `image` | Sheet headers `Image (upload)` and `Image (URL)`. Use one of the two. A path `/images/...` keeps the local file |
 
-A sheet header `Link` is read as the registration / details link. A sheet header `Image` is read as the poster. The moderator column is `status`. `rejected` and `superseded` store `draft`, which the site does not show.
+A sheet header `Link` is read as the registration / details link. A sheet header `Image` is read as the poster. The moderator column is `status`: `published` or `draft`. `draft` is left out of the public site.
 
 ## 4. Opening → `data/openings.csv`
 
@@ -81,7 +81,7 @@ A sheet header `Link` is read as the registration / details link. A sheet header
 | 4 | Link to apply or advertisement | URL | yes | `apply_url` |
 | 5 | Deadline | Date (or leave blank for rolling) | no | `deadline` |
 
-`published` stores `status=open`. The build shows an opening as **closed** once its `deadline` has passed. `rejected` and `superseded` store `draft`, which is left out of the public site. The moderator column is `status`. A sheet header `Application link` is read as the apply link.
+The moderator column is `status`: `open`, `closed`, or `draft`. Those values are stored unchanged. The build also shows an `open` row as **closed** once its `deadline` has passed. `draft` is left out of the public site. A sheet header `Application link` is read as the apply link.
 
 ## 5. Alumni update → `data/people/alumni.csv`
 
@@ -99,7 +99,7 @@ A sheet header `Link` is read as the registration / details link. A sheet header
 | 10 | I consent to this information being published on the SIT website | Checkbox | yes | `consent` (rows without consent are skipped) |
 | — | (moderator) | — | — | `status` |
 
-`rejected` or `superseded` stores `draft`. That person stays in the CSV and is left off the public site. A blank `status` on a row already in the directory still shows. `Current position and organization` is read as the organisation field.
+`draft` stays in the CSV and is left off the public site. A blank `status` on a row already in the directory still shows. `Current position and organization` is read as the organisation field.
 
 ## Optional 6. Faculty / student profile update
 

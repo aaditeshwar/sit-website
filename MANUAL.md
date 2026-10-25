@@ -88,11 +88,11 @@ On every sheet, add these columns to the right of the form responses:
 | `news`, `events`, `openings`, `alumni` | `status`, `moderator_note`, and any `edited_<column>` overrides |
 | `projects` | `moderation` (this name is required, because the form already has a project Status question), `featured`, `moderator_note`, and any `edited_<column>` overrides |
 
-`status` / `moderation` values are `pending` (the default), `published`, `rejected`, or `superseded`. A sheet with no such column imports nothing.
+News, events, and alumni `status` is `published` or `draft`. Openings `status` is `open`, `closed`, or `draft`. Projects `moderation` is `TRUE` or `FALSE`. A sheet with no such column leaves every existing row's visibility unchanged and adds nothing new.
 
 Format date columns as `yyyy-mm-dd`. A value such as `05/06/2026` is read as 6 May.
 
-The catalogue CSVs follow the sheet's column order, starting after Timestamp. Copy from the first column through `featured` (projects and news) or `status` (events, openings, and alumni) and paste into the sheet at column B. Columns after that (`id`, `published`, `last_updated`, `submitted_by`) stay in the file and are not on the sheet. An empty `image_upload` or `photo_upload` cell lines the image URL up with the sheet's URL column. Put a site path such as `/images/research/photo.png` in the image column. Dates are `YYYY-MM-DD`. A news item that only had a year or a month is dated the 1st of that month. A rolling opening has a blank deadline. Hidden rows use `rejected`. Openings that should stay listed use `published`.
+The catalogue CSVs follow the sheet's column order, starting after Timestamp. Copy from the first column through `featured` (projects and news) or `status` (events, openings, and alumni) and paste into the sheet at column B. Columns after that (`id`, `published`, `last_updated`, `submitted_by`) stay in the file and are not on the sheet. An empty `image_upload` or `photo_upload` cell lines the image URL up with the sheet's URL column. Put a site path such as `/images/research/photo.png` in the image column. Dates are `YYYY-MM-DD`. A news item that only had a year or a month is dated the 1st of that month. A rolling opening has a blank deadline. Hidden news, events, and alumni use `draft`. Hidden projects use `moderation` `FALSE`. Openings that should stay listed use `open`; a filled deadline in the past is shown as closed, and `closed` marks one closed before its deadline. Hidden openings use `draft`.
 
 A form question may omit the parenthetical note from `forms/google-forms.md`. `One-paragraph summary` matches `One-paragraph summary (shown on cards)`. The remaining words must still be the same.
 
@@ -107,13 +107,13 @@ The workflow file is `.github/workflows/import-forms.yml`. After this repository
 Someone with an IIT Delhi account submits the form. A moderator works in the spreadsheet. The site changes only after that row is imported and the site is rebuilt.
 
 1. Read the new row. Fix wording in an `edited_<column>` column (for example `edited_summary`). The original answer stays in place. The import uses the edited value.
-2. Set `status` to `published` (on the projects tab, set `moderation` to `published`).
+2. Set `status` to `published` for news, events, and alumni, `open` for an opening, or `moderation` to `TRUE` for a project.
 3. Set `featured` to `TRUE` on a project that should sort first on `/research/projects`. The home-page news band shows the latest items by date. The large home carousel is `data/hero-slides.csv`, edited by hand.
 4. Wait for the 06:00 IST job, or run the workflow by hand. It opens a pull request titled `Content: N new submissions` when the CSVs changed. Merge that pull request. Then, on the server, pull and build (section 7). The live site changes when that build is what Apache serves.
 
 Each run reads the whole sheet and merges it into the CSV already in the repository. The same title updates that CSV row. A new title is added, and the previous row stays. Rows that are only in the CSV, and not on the sheet, stay as they are.
 
-`published` shows the row. `rejected` and `superseded` keep an existing row and hide it (`draft` for news, events, openings, and alumni; `published=FALSE` for a project). `pending`, and a blank status, update the other fields of an existing row and leave it shown or hidden as it already was. A new title with `pending`, `rejected`, or `superseded` is not added. A blank cell keeps the current value. A cell containing only `-` clears that value. An empty image cell keeps the file; `-` in the image cell clears it. Alumni rows with the consent box unticked are ignored.
+`published`, `open`, and `TRUE` show the row. `draft` and `FALSE` keep an existing row and hide it. `closed` stores an opening as closed. A blank visibility cell updates the other fields of an existing row and leaves it shown or hidden as it already was. A new title with a blank or hidden value is not added. A blank cell keeps the current value. A cell containing only `-` clears that value. An empty image cell keeps the file; `-` in the image cell clears it. Alumni rows with the consent box unticked are ignored. Dropdown values are stored as written when they are already the CSV token.
 
 Matching rules:
 
@@ -123,7 +123,7 @@ Matching rules:
 | Projects | The "update to an existing project" answer: current title, page link, or id. A blank answer creates a new project. Lead and co-faculty are IITD email ids (`aseth`, or `aseth@iitd.ac.in`), separated by `;`, matched to the email column in `data/people/faculty.csv`. The import stores that email id. The site shows the name. A name already in the CSV still matches |
 | Alumni | Full name, matched ignoring capitalisation |
 
-On the projects tab, the form's own Status (Ongoing, Open for students, Proposed, Completed) is the project state. The moderator column `moderation` decides whether the project is shown. `initiative` is the slug of a story under `content/impact/` (`core-stack`, `gram-vaani`, `assistech`, `computer-architecture`, `cybersecurity`). The form question is “Linked to an ongoing initiative”. Leave a cell blank to keep the current CSV value.
+On the projects tab, the form's own Status (`ongoing`, `open-for-students`, `proposed`, `completed`) is the project state. The moderator column `moderation` is `TRUE` or `FALSE` and is stored in the CSV column `published`. `initiative` is the slug of a story under `content/impact/` (`core-stack`, `gram-vaani`, `assistech`, `computer-architecture`, `cybersecurity`). The form question is “Linked to an ongoing initiative”. Leave a cell blank to keep the current CSV value.
 
 Imported images land in:
 
@@ -295,5 +295,5 @@ Search, the sitemap, and the social-card images are produced by `corepack pnpm b
 - `pnpm content` names the CSV column and the allowed values. Fix that cell. Usual causes are a category or thrust area that is not one of the slugs in `forms/google-forms.md`, a date that is not `YYYY-MM-DD`, or a link that is not a site path or an `http(s)` URL.
 - The import prints `error:` lines and does not treat that run as clean. `warning:` lines (no consent, an unmatched superseded row, a missing image) leave the rest of the import in place.
 - `No published sheet URLs are set` means every line in `forms/published-sheets.env` is blank. The CSVs are left untouched. A line that names one form and is blank skips that form and imports the others.
-- A form row that should have updated a project created a second project instead: the update answer did not match the current title or id. Set it to the existing id (the first column of `data/projects.csv`) and import again. Mark the duplicate `superseded` if it was published.
+- A form row that should have updated a project created a second project instead: the update answer did not match the current title or id. Set it to the existing id (the first column of `data/projects.csv`) and import again. Set the duplicate's `moderation` to `FALSE` if it was added.
 - The HTML loads and the pictures do not. View source. A `src` or `href` that starts with `/_img/` or `/assets/` is asking the host root for a file that lives next to the HTML. Pull the current tree and run `corepack pnpm build` again so those paths are relative (`../_img/...` on a nested page). Then run the `chmod` commands in section 7. If the paths are already relative and the files 404, `web/dist/_img/` is missing or Apache cannot read it.

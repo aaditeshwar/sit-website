@@ -1,5 +1,5 @@
 Timestamp,Email Address,Project title,"Is this an update to an existing project? If so, paste its current title or page link",Thrust area,Stage,Status,One-to-two-sentence summary,Detailed description (markdown allowed),Lead and co-faculty,Partners / collaborators,Sponsor / funding programme,Who are you looking for?,Background expected from applicants,Website,"Image (landscape, ≥ 1200 px wide)",Start year,moderation,featured,Linked to an ongoing initiative,published,moderator_note
-,,Village water study,Village water study,Sustainability and social development,Initiative,Completed,Updated summary of the village water study.,,Aaditeshwar Seth,,,"PhD, Funding",,,,2019,published,,,,
-,,Canal silt calculator,,Sustainable and scalable computing,Project,Open for students,A calculator for canal silt loads.,,Aaditeshwar Seth,,,"MS (Research), Pre-doc (Research Fellow)",,,,2025,published,,,,
-,,Retire me,,Health and social care,Initiative,Completed,An old project that the sheet supersedes.,,Aaditeshwar Seth,,,,,,,,superseded,,,,
-,,Pending project,,Health and social care,Project,Ongoing,This project is not approved.,,Aaditeshwar Seth,,,,,,,,pending,,,,
+,,Village water study,Village water study,Sustainability and social development,Initiative,Completed,Updated summary of the village water study.,,Aaditeshwar Seth,,,"PhD, Funding",,,,2019,TRUE,,,,
+,,Canal silt calculator,,Sustainable and scalable computing,Project,Open for students,A calculator for canal silt loads.,,Aaditeshwar Seth,,,"MS (Research), Pre-doc (Research Fellow)",,,,2025,TRUE,,,,
+,,Retire me,,Health and social care,Initiative,Completed,An old project that the sheet supersedes.,,Aaditeshwar Seth,,,,,,,,FALSE,,,,
+,,Pending project,,Health and social care,Project,Ongoing,This project is not approved.,,Aaditeshwar Seth,,,,,,,,FALSE,,,,

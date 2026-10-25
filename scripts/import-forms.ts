@@ -300,16 +300,34 @@ function visibilityField(tab: string): string {
   return tab === 'projects' ? 'published' : 'status'
 }
 
-function showValue(tab: string): string {
-  if (tab === 'projects') return 'TRUE'
-  if (tab === 'openings') return 'open'
-  return 'published'
+/** Sheet cells use the same words the CSV stores. A blank cell leaves visibility unchanged. */
+function visibilityAction(tab: string, raw: string): 'show' | 'hide' | 'closed' | 'leave' | 'unknown' {
+  const lower = raw.trim().toLowerCase()
+  if (!lower) return 'leave'
+  if (tab === 'projects') {
+    if (lower === 'true') return 'show'
+    if (lower === 'false') return 'hide'
+    return 'unknown'
+  }
+  if (tab === 'openings') {
+    if (lower === 'open') return 'show'
+    if (lower === 'draft') return 'hide'
+    if (lower === 'closed') return 'closed'
+    return 'unknown'
+  }
+  if (lower === 'published') return 'show'
+  if (lower === 'draft') return 'hide'
+  return 'unknown'
 }
 
-function hideValue(tab: string): string {
-  if (tab === 'projects') return 'FALSE'
-  if (tab === 'openings') return 'draft'
-  return 'draft'
+function visibilityWrite(tab: string, action: 'show' | 'hide' | 'closed'): string {
+  if (tab === 'projects') return action === 'show' ? 'TRUE' : 'FALSE'
+  if (tab === 'openings') {
+    if (action === 'show') return 'open'
+    if (action === 'closed') return 'closed'
+    return 'draft'
+  }
+  return action === 'show' ? 'published' : 'draft'
 }
 
 /** CSV address for a "Publish to the web" link. The HTML page itself has no rows. */
@@ -642,7 +660,7 @@ export async function importForms(options: ImportOptions = {}): Promise<ImportRe
     if (unmapped.length) warnings.push(`${form.tab}: unmapped columns: ${unmapped.join(', ')}`)
     const sheetHeaders = new Set(sheet.flatMap((row) => Object.keys(row).map((key) => questionKey(key))))
     if (pageUrl && sheet.length && !sheetHeaders.has(questionKey(form.moderationColumn))) {
-      warnings.push(`${form.tab}: add a ${form.moderationColumn} column. A blank status is treated as pending.`)
+      warnings.push(`${form.tab}: add a ${form.moderationColumn} column. A blank cell leaves visibility unchanged.`)
     }
 
     let dirty = false
@@ -655,19 +673,18 @@ export async function importForms(options: ImportOptions = {}): Promise<ImportRe
 
     for (const [index, sheetRow] of sheet.entries()) {
       const where = `${form.tab} row ${index + 2}`
-      let moderation = (cellByName(sheetRow, form.moderationColumn) ?? '').trim().toLowerCase()
-      if (!moderation) {
-        warnings.push(`${where}: status is blank, treated as pending`)
-        moderation = 'pending'
-      } else if (!['published', 'pending', 'rejected', 'superseded'].includes(moderation)) {
-        warnings.push(`${where}: unknown moderation "${moderation}"`)
+      const moderationRaw = (cellByName(sheetRow, form.moderationColumn) ?? '').trim()
+      const action = visibilityAction(form.tab, moderationRaw)
+      if (action === 'leave') warnings.push(`${where}: ${form.moderationColumn} is blank, visibility left unchanged`)
+      if (action === 'unknown') {
+        warnings.push(`${where}: unknown ${form.moderationColumn} "${moderationRaw}"`)
         continue
       }
       const label = titleColumn ? readCell(sheetRow, titleColumn) : ''
       const hint = updateColumn ? readCell(sheetRow, updateColumn) : ''
       const match = matchIndex(form, rows, label, hint)
       const current = match >= 0 ? rows[match] : undefined
-      if (!current && moderation !== 'published') continue
+      if (!current && action !== 'show' && action !== 'closed') continue
 
       const consent = form.columns.find((column) => column.kind === 'gate')
       if (consent && !hasConsent(readCell(sheetRow, consent))) {
@@ -698,8 +715,9 @@ export async function importForms(options: ImportOptions = {}): Promise<ImportRe
         const merged: SheetRow = { ...(current ?? {}) }
         for (const [key, value] of Object.entries(incoming)) merged[key] = value
         if (!current && (form.tab === 'news' || form.tab === 'projects') && !merged.featured) merged.featured = 'FALSE'
-        if (moderation === 'published') merged[visibilityField(form.tab)] = showValue(form.tab)
-        else if (moderation === 'rejected' || moderation === 'superseded') merged[visibilityField(form.tab)] = hideValue(form.tab)
+        if (action === 'show' || action === 'hide' || action === 'closed') {
+          merged[visibilityField(form.tab)] = visibilityWrite(form.tab, action)
+        }
         if (keys.includes('id')) {
           merged.id = current?.id || allocateId(slugifyTitle(label), usedIds(rows))
           if (!merged.id) {

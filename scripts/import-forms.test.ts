@@ -234,7 +234,7 @@ test('a project faculty email id is stored as the email id', async () => {
     path.join(incoming, 'projects.csv'),
     [
       'Project title,Thrust area,Stage,Status,One-to-two-sentence summary,Lead and co-faculty,moderation',
-      'Email id project,Sustainability and social development,"Initiative (several co-owners, products/platforms, external funding)",Ongoing,A summary.,aseth@cse.iitd.ac.in; svs; Someone Else,published',
+      'Email id project,Sustainability and social development,"Initiative (several co-owners, products/platforms, external funding)",Ongoing,A summary.,aseth@cse.iitd.ac.in; svs; Someone Else,TRUE',
     ].join('\n'),
   )
   try {
@@ -250,7 +250,41 @@ test('a project faculty email id is stored as the email id', async () => {
   }
 })
 
-test('a blank cell keeps the value, a dash clears it, and pending does not change visibility', async () => {
+test('category tokens from the form are stored unchanged', async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'sit-slugs-'))
+  const incoming = path.join(root, 'incoming')
+  fs.mkdirSync(path.join(root, 'data'), { recursive: true })
+  fs.mkdirSync(incoming, { recursive: true })
+  fs.writeFileSync(
+    path.join(root, 'data/news.csv'),
+    'id,date,category,title,summary,body_md,link,image,thrust_area,featured,status,submitted_by\n',
+  )
+  fs.writeFileSync(
+    path.join(root, 'data/openings.csv'),
+    'id,title,type,summary,apply_url,deadline,status\n',
+  )
+  fs.writeFileSync(
+    path.join(incoming, 'news.csv'),
+    'Headline,Date of the news,Category,One-paragraph summary,Thrust area,status\nSlug news,2026-10-25,achievement,A summary,sustainability-and-social-development,published\n',
+  )
+  fs.writeFileSync(
+    path.join(incoming, 'openings.csv'),
+    'Position / call title,Type,Summary,Link to apply or advertisement,status\nClosed role,position,A summary,https://example.com/apply,closed\n',
+  )
+  try {
+    const result = await importForms({ root, fromDir: incoming, today: '2026-10-25' })
+    assert.deepEqual(result.errors, [])
+    const news = fs.readFileSync(path.join(root, 'data/news.csv'), 'utf8')
+    assert.match(news, /achievement,Slug news/)
+    assert.match(news, /sustainability-and-social-development/)
+    const openings = fs.readFileSync(path.join(root, 'data/openings.csv'), 'utf8')
+    assert.match(openings, /closed-role,Closed role,position,.*closed/)
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true })
+  }
+})
+
+test('a blank cell keeps the value, a dash clears it, and a blank status does not change visibility', async () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'sit-blank-'))
   const incoming = path.join(root, 'incoming')
   fs.mkdirSync(path.join(root, 'data'), { recursive: true })
@@ -267,8 +301,8 @@ test('a blank cell keeps the value, a dash clears it, and pending does not chang
     path.join(incoming, 'news.csv'),
     [
       'Headline,Date of the news,Category,One-paragraph summary,Full text,Link for more information,Thrust area,status,featured,Bonus',
-      'Keep me,,Announcement,Updated summary,-,,,pending,FALSE,ignored',
-      'Brand new,2026-10-25,Announcement,Fresh.,,,,rejected,,',
+      'Keep me,,Announcement,Updated summary,-,,,,FALSE,ignored',
+      'Brand new,2026-10-25,Announcement,Fresh.,,,,draft,,',
     ].join('\n'),
   )
   fs.writeFileSync(
