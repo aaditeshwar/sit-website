@@ -11,7 +11,7 @@ card_image: "images/impact/core-stack-card.jpg"
 faculty: ["Aaditeshwar Seth", "Parag Singla", "Abhilash Jindal", "Tarun Mangla"]
 website: "https://core-stack.org/"
 metrics:
-  - { value: "1,500+", label: "villages where community plans draw on CoRE stack data" }      # core-stack.org, Oct 2026; RIC note says ~2,000 — VERIFY latest
+  - { value: "2,000+", label: "villages where community plans draw on CoRE stack data" }      # 2,000 villages, Oct 2026
   - { value: "9+", label: "Indian states" }
   - { value: "500+", label: "landscape stewards, field workers and community resource persons using the tools" }
   - { value: "25+", label: "collaborating organisations in the network" }
@@ -26,7 +26,7 @@ timeline:
     text: "With philanthropic and CSR support, including from Tower Research Capital, the research outputs are rebuilt as an open, layered stack: pre-computed datasets on nested micro-watersheds, community planning tools such as Commons Connect, and public APIs. Partners such as PRADAN and the Foundation for Ecological Security take the tools to the field."
   - stage: ecosystem
     period: "2025 onwards"
-    text: "A network of 25+ organisations, a developer community and annual innovation challenges, and work in 1,500+ villages across 9+ states. The stack is positioned to shape how government and civil society use geospatial data for community-led, equitable natural-resource management."
+    text: "A network of 25+ organisations, a developer community and annual innovation challenges, and work in 2,000+ villages across 9+ states. The stack is positioned to shape how government and civil society use geospatial data for community-led, equitable natural-resource management."
 partners:
   - { name: "Tower Research Capital", role: "CSR partner" }
   - { name: "PRADAN", role: "field partner (Commons Connect, Jharkhand)" }
@@ -71,13 +71,13 @@ Everything is **open**: code on GitHub, data in a public explorer and on Google 
 
 ::timeline
 
-The CoRE stack is a clear example of SIT's path from project to initiative to ecosystem. It **started as several student projects** on remote sensing for land and water. **Philanthropic capital** then turned the research outputs into products, and over roughly a year and a half these **scaled to well over a thousand villages**. Today the CoRE stack sits inside a growing ecosystem of civil-society organisations, researchers, developers and funders, and is well placed to influence how government uses geospatial data for natural-resource management.
+The CoRE stack is a clear example of SIT's path from project to initiative to ecosystem. It **started as several student projects** on remote sensing for land and water. **Philanthropic capital** then turned the research outputs into products, and over roughly a year and a half these **scaled to more than 2,000 villages**. Today the CoRE stack sits inside a growing ecosystem of civil-society organisations, researchers, developers and funders, and is well placed to influence how government uses geospatial data for natural-resource management.
 
 ## Impact
 
 ::metrics
 
-- **Evidence-based village plans.** Field workers and community resource persons use CoRE stack tools to draft sustainable land and water plans in more than 1,500 villages across states including Jharkhand, Odisha, Rajasthan, Bihar and Karnataka. For example, **PRADAN** uses Commons Connect in Ramgarh district, Jharkhand, integrated with its own planning platform.
+- **Evidence-based village plans.** Field workers and community resource persons use CoRE stack tools to draft sustainable land and water plans in more than 2,000 villages across states including Jharkhand, Odisha, Rajasthan, Bihar and Karnataka. For example, **PRADAN** uses Commons Connect in Ramgarh district, Jharkhand, integrated with its own planning platform.
 - **A convening role.** The **Landscape Solvability Workshops** at IIT Delhi bring practitioners, researchers and technologists together around shared data. In November 2024, more than 50 participants from 20 organisations built decision logics, data-driven storylines and learning tools for community stewards. In December 2025 the second workshop drew more than 80 attendees.
 - **An open innovation community.** Innovation challenges (from November 2025), weekly developer calls and a monthly community of practice invite others to build on the stack. Contributions from the first challenge received follow-on support. Hackathons with collaborators such as the University of Cambridge explore new geospatial AI models.
 - **Recognition.** The CoRE stack was a top-20 finalist in the *AI for ALL* challenge at the India AI Summit.

@@ -9,7 +9,7 @@ Content for the new website of the **Amar Nath and Shashi Khosla School of Infor
 | `content/site.yml` | navigation, footer, contact, theme colours | edit directly |
 | `content/pages/**.md` | every static page; `route:` in front-matter sets the URL | edit directly |
 | `content/impact/*.md` | the four flagship impact stories (project → initiative → ecosystem) | edit directly |
-| `content/research-areas/*.md` | the four thrust areas for 2025–2035 | edit directly |
+| `content/research-areas/*.md` | the four thrust areas for 2025–2030 | edit directly |
 | `data/projects.csv` | all projects: ongoing, open for students, proposed, completed | **Google Form** + edits |
 | `data/news.csv`, `events.csv`, `openings.csv` | news, events, openings | **Google Forms** |
 | `data/people/*.csv` | faculty, students, alumni, staff, advisory board | edits; alumni via **Google Form** |

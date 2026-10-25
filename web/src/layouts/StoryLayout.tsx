@@ -1,7 +1,6 @@
 import { A } from '../components/A'
 import { StageBadge } from '../components/Badge'
 import { Breadcrumbs } from '../components/Breadcrumbs'
-import { Card } from '../components/Card'
 import { ResponsiveImage } from '../components/ResponsiveImage'
 import { TodoBadge } from '../components/TodoBadge'
 import { areas, impact } from '../lib/content'
@@ -51,7 +50,7 @@ export function StoryLayout({ story }: { story: Story }) {
         <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/60 to-dark/25" aria-hidden="true" />
         <div className="relative z-10 mx-auto flex h-full max-w-page items-end px-4 pb-8 md:px-6 md:pb-10">
           <div className="max-w-xl md:max-w-[55%]">
-            {stage ? (
+            {stage && stage !== 'ecosystem' ? (
               <div className="mb-3">
                 <StageBadge stage={stage} />
               </div>
@@ -168,15 +167,34 @@ export function StoryLayout({ story }: { story: Story }) {
         {next ? (
           <section className="mt-12">
             <h2 className="md-heading mb-4 font-heading text-[30px] font-semibold leading-tight">Next story</h2>
-            <Card
+            <A
               href={next.route}
-              title={next.title}
-              text={publicText(next.tagline)}
-              image={next.card_image}
-              seed={next.slug}
-              tint={nextStage ? STAGES[nextStage].color : undefined}
-              badges={nextStage ? <StageBadge stage={nextStage} /> : undefined}
-            />
+              className="group flex items-center gap-4 rounded-lg border border-line bg-surface p-3 no-underline sm:gap-5 sm:p-4"
+            >
+              <span className="relative h-16 w-24 shrink-0 overflow-hidden rounded-md bg-surface-alt sm:h-20 sm:w-32">
+                <ResponsiveImage
+                  src={next.card_image}
+                  alt=""
+                  seed={next.slug}
+                  tint={nextStage ? STAGES[nextStage].color : undefined}
+                  fill
+                  sizes="128px"
+                />
+              </span>
+              <span className="min-w-0">
+                {nextStage && nextStage !== 'ecosystem' ? (
+                  <span className="mb-2 block">
+                    <StageBadge stage={nextStage} />
+                  </span>
+                ) : null}
+                <span className="block font-heading text-lg font-semibold leading-snug text-ink group-hover:text-primary sm:text-[20px]">
+                  {next.title}
+                </span>
+                {publicText(next.tagline) ? (
+                  <span className="mt-1 block line-clamp-3 text-sm leading-relaxed">{publicText(next.tagline)}</span>
+                ) : null}
+              </span>
+            </A>
           </section>
         ) : null}
       </div>

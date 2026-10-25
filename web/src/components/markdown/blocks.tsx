@@ -627,7 +627,7 @@ function ImpactCards({ attrs }: BlockProps) {
               image={str(row, 'card_image') || undefined}
               seed={str(row, 'slug')}
               tint={stage ? STAGES[stage].color : undefined}
-              badges={stage ? <StageBadge stage={stage} /> : undefined}
+              badges={stage && stage !== 'ecosystem' ? <StageBadge stage={stage} /> : undefined}
             />
           </li>
         )

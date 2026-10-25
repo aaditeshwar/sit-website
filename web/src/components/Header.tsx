@@ -173,7 +173,7 @@ export function Header() {
       </div>
       <div className="relative border-b border-line" onMouseLeave={() => setOpenIndex(null)}>
         <div
-          className={`mx-auto flex max-w-page items-center gap-3 px-4 md:px-6 ${shrunk ? 'py-2' : 'py-3'} transition-[padding] duration-200`}
+          className={`mx-auto flex max-w-page items-center gap-3 px-4 md:px-6 ${shrunk ? 'py-1' : 'py-1.5 sm:py-2'} transition-[padding] duration-200`}
         >
           <A
             href="/"
@@ -186,8 +186,8 @@ export function Header() {
               src={site.logo}
               alt=""
               seed="logo"
-              sizes="56px"
-              className={`shrink-0 bg-white object-cover object-left ${shrunk ? 'h-9 w-9' : 'h-11 w-11 sm:h-14 sm:w-14'}`}
+              sizes="64px"
+              className={`shrink-0 bg-white object-contain ${shrunk ? 'h-11 w-11' : 'h-14 w-14 sm:h-16 sm:w-16'}`}
             />
             <span className="font-heading font-semibold leading-tight" style={{ color: '#1F2328' }}>
               <span className={`block whitespace-nowrap ${shrunk ? 'text-[11px]' : 'text-[11px] sm:text-sm'}`}>
@@ -307,7 +307,7 @@ export function Header() {
                     />
                   </div>
                   <div className="space-y-2 p-4">
-                    {featured.stage ? <StageBadge stage={featured.stage} /> : null}
+                    {featured.stage && featured.stage !== 'ecosystem' ? <StageBadge stage={featured.stage} /> : null}
                     <p className="font-heading text-[18px] font-semibold leading-snug text-ink">{featured.title}</p>
                     {featured.text ? <p className="line-clamp-3 text-sm leading-relaxed">{featured.text}</p> : null}
                   </div>

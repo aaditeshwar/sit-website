@@ -21,8 +21,8 @@ export function Footer() {
     <footer className="bg-dark text-white" data-pagefind-ignore>
       <div className="mx-auto grid max-w-page gap-10 px-4 py-14 md:px-6 lg:grid-cols-[minmax(0,1.3fr)_repeat(3,minmax(0,1fr))]">
         <div className="space-y-4">
-          <A href="/" aria-label={site.name} className="inline-block rounded-md bg-white px-2 py-1">
-            <ResponsiveImage src={site.logo} alt="" seed="logo" sizes="48px" className="h-11 w-11 object-cover object-left" />
+          <A href="/" aria-label={site.name} className="inline-flex rounded-md bg-white p-1" style={{ colorScheme: 'only light' }}>
+            <ResponsiveImage src={site.logo} alt="" seed="logo" sizes="64px" className="h-14 w-14 object-contain sm:h-16 sm:w-16" />
           </A>
           <p className="max-w-sm text-sm leading-relaxed text-white/80">{site.tagline}</p>
         </div>

@@ -29,7 +29,7 @@ Ideas at SIT follow a path we have walked many times. A **project** with a clear
   link: "/impact/assistech"
 - stage: initiative
   title: "Build it together"
-  text: "Several student projects on remote sensing came together as the CoRE stack, now used for water-security planning in more than 1,500 villages."
+  text: "Several student projects on remote sensing came together as the CoRE stack, now used for water-security planning in more than 2,000 villages."
   link: "/impact/core-stack"
 - stage: ecosystem
   title: "Transform the ecosystem"
@@ -43,7 +43,7 @@ Ideas at SIT follow a path we have walked many times. A **project** with a clear
 
 ::impact-cards{limit="5"}
 
-## Four thrust areas for 2025–2035
+## Four thrust areas for 2025–2030
 
 ::thrust-area-tiles{compact="true"}
 
