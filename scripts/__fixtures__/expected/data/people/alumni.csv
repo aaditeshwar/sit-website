@@ -1,0 +1,4 @@
+name,programme,graduation_year,thesis_title,supervisor,current_position,profile_url,photo,story_md,status
+Existing Person,phd,2020,Old thesis,Aaditeshwar Seth,Faculty at Example University,https://example.com/existing,images/alumni/existing-person.jpg,Now working on water systems.,published
+Gone Person,msr,2019,,,,,,,draft
+New Graduate,msr,2024,Satellite monitoring,Aaditeshwar Seth,Researcher,,,,published

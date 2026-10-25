@@ -1,0 +1,43 @@
+{
+  "private": true,
+  "name": "sit-website",
+  "type": "module",
+  "packageManager": "pnpm@10.18.3",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "content": "tsx scripts/build-content.ts",
+    "health": "tsx scripts/content-health.ts",
+    "images": "tsx scripts/images.ts",
+    "dev": "tsx scripts/build-content.ts && tsx scripts/images.ts && tsx scripts/og.ts && tsx scripts/sitemap.ts && tsx scripts/redirects.ts && concurrently -k \"tsx scripts/build-content.ts --watch\" \"corepack pnpm --filter web dev\"",
+    "build": "tsx scripts/build-content.ts && tsx scripts/images.ts && tsx scripts/og.ts && tsx scripts/sitemap.ts && tsx scripts/redirects.ts && corepack pnpm --filter web build && corepack pnpm exec pagefind --site web/dist && tsx scripts/verify-dist.ts",
+    "preview": "corepack pnpm --filter web preview",
+    "import:forms": "tsx scripts/import-forms.ts",
+    "test": "tsx --test scripts/redirects.test.ts scripts/import-forms.test.ts"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "4.0.9",
+    "@types/node": "24.9.1",
+    "@types/papaparse": "5.3.16",
+    "concurrently": "10.0.6",
+    "pagefind": "1.3.0",
+    "puppeteer-core": "24.22.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  },
+  "dependencies": {
+    "googleapis": "148.0.0",
+    "gray-matter": "4.0.3",
+    "js-yaml": "4.1.0",
+    "papaparse": "5.7.0",
+    "sharp": "0.35.5",
+    "zod": "3.25.76"
+  }
+}

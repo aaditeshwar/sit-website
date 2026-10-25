@@ -1,0 +1,5 @@
+name,type,designation,email,phone,photo,active
+Suresh Mourya,administrative,Project Attendant,,,images/people/admin-staff/suresh-mourya.jpg,TRUE
+Arun Kumar,administrative,Jr Project Assistant (Tech),,,images/people/admin-staff/arun-kumar.jpg,TRUE
+Deepak Yadav,administrative,Jr Assistant (Stores),,,images/people/admin-staff/deepak-yadav.jpg,TRUE
+Rajesh Kumar,administrative,Sr Project Assistant,,,images/people/admin-staff/rajesh-kumar.jpg,TRUE

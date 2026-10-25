@@ -1,0 +1,3 @@
+id,title,type,summary,apply_url,contact,deadline,status
+existing-fellowship,Existing fellowship,fellowship,Already listed.,https://example.com/existing,sit@iitd.ac.in,,open
+research-fellow-call,Research fellow call,call,Applications are open for research fellows.,https://example.com/apply,,2026-12-01,open

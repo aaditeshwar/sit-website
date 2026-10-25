@@ -1,0 +1,3 @@
+id,title,type,start_date,end_date,venue,summary,registration_url,image,status
+monsoon-field-day,Monsoon field day,workshop,2026-10-24,2026-10-25,IIT Delhi,A one-day field workshop.,https://example.com/field-day,images/events/monsoon-field-day.jpg,published
+old-seminar,Old seminar,talk,2024-01-15,,,A seminar that stays.,,,published

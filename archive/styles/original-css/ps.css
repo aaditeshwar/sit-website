@@ -1,0 +1,58 @@
+/*.page-title .container {
+    height: auto !important;
+}
+
+.fa {
+
+    font: normal normal normal 14px/2 FontAwesome !important;
+}
+
+.mega-menu .menu-logo img {
+    height: 55px;
+}*/
+
+.ps-font {
+	font-size: 17px !important;
+}
+
+.ps-hover:hover{
+    background: #84ba3f;
+    color: #ffffff;
+    border-color: #84ba3f;
+}
+
+.ps-height {
+	height: 256px !important;
+}
+
+.ps-text {
+
+	color: #363636 !important;
+}
+
+.ps-image{
+	    max-width: 263px !important;
+    max-height: 272px !important;
+}
+
+.img-fluid-ps {
+    
+    height: 273px !important;
+
+}
+
+@media screen and (min-width: 992px){
+	.mega-menu.desktopTopFixed .menu-list-items .menu-logo > li > a img {
+    margin: 0px 0px !important;
+}
+}
+@media screen and (min-width: 768px){
+	.ar-profile-bg {
+    height: 600px !important;
+    }
+}
+@media screen and (min-width: 990px){
+    .page-title.small {
+        padding-top: 140px !important;
+    }
+}

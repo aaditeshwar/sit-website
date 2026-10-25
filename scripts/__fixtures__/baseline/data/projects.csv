@@ -1,0 +1,3 @@
+id,title,thrust_area,stage,status,summary,description_md,faculty,partners,sponsor,seeking,background,website,image,initiative,start_year,featured,published,last_updated
+village-water,Village water study,sustainability-and-social-development,project,ongoing,A baseline study of village water.,,Aaditeshwar Seth,,,,,,,core-stack,,TRUE,TRUE,2020-01-01
+retire-me,Retire me,health-and-social-care-technologies,initiative,completed,An old project that the sheet supersedes.,,Aaditeshwar Seth,,,,,,,,,FALSE,TRUE,2020-01-01

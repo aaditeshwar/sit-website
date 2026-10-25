@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sit.iitd.ac.in/sitemap.xml

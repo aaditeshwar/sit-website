@@ -1,0 +1,4 @@
+id,title,thrust_area,stage,status,summary,description_md,faculty,partners,sponsor,seeking,background,website,image,initiative,start_year,featured,published,last_updated
+canal-silt-calculator,Canal silt calculator,sustainable-and-scalable-computing,project,open-for-students,A calculator for canal silt loads.,,Aaditeshwar Seth,,,MSR;Predoc,,,,,2025,FALSE,TRUE,2026-10-24
+retire-me,Retire me,health-and-social-care-technologies,initiative,completed,An old project that the sheet supersedes.,,Aaditeshwar Seth,,,,,,,,,FALSE,FALSE,2026-10-24
+village-water,Village water study,sustainability-and-social-development,initiative,completed,Updated summary of the village water study.,,Aaditeshwar Seth,,,PhD;Funding,,,,core-stack,2019,TRUE,TRUE,2026-10-24

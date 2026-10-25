@@ -1,0 +1,80 @@
+Options -Indexes
+DirectorySlash On
+DirectoryIndex index.html
+ErrorDocument 404 /404/index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Canonical host and https. Local Apache (the redirect test) is left alone.
+  RewriteCond %{HTTP_HOST} !^localhost(?::\d+)?$ [NC]
+  RewriteCond %{HTTP_HOST} !^127\.0\.0\.1(?::\d+)?$ [NC]
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} !^sit\.iitd\.ac\.in$ [NC]
+  RewriteRule ^ https://sit.iitd.ac.in%{REQUEST_URI} [L,R=301]
+  # Old URLs have no trailing slash, so they must match before the slash canonical.
+  # --- BEGIN generated redirects (scripts/redirects.ts) ---
+  RewriteRule ^frontend/vision/?$ /about/vision/ [R=301,L]
+  RewriteRule ^people/?$ /people/ [R=301,L]
+  RewriteRule ^faculty/?$ /people/faculty/ [R=301,L]
+  RewriteRule ^students/?$ /people/students/ [R=301,L]
+  RewriteRule ^alumni/?$ /people/alumni/ [R=301,L]
+  RewriteRule ^researchstaff/?$ /people/staff/ [R=301,L]
+  RewriteRule ^adminstaff/?$ /people/staff/ [R=301,L]
+  RewriteRule ^research/?$ /research/projects/ [R=301,L]
+  RewriteRule ^impact/?$ /impact/core-stack/ [R=301,L]
+  RewriteRule ^about/facilities/?$ /about/ [R=301,L]
+  RewriteRule ^about/leadership/?$ /about/ [R=301,L]
+  RewriteRule ^about/reports/?$ /about/ [R=301,L]
+  RewriteRule ^impact/architecture-and-security/?$ /impact/computer-architecture/ [R=301,L]
+  RewriteRule ^show-news/53/?$ /research/sustainability-and-social-development/ [R=301,L]
+  RewriteRule ^show-news/54/?$ /research/sustainable-and-scalable-computing/ [R=301,L]
+  RewriteRule ^show-news/55/?$ /research/health-and-social-care-technologies/ [R=301,L]
+  RewriteRule ^show-news/56/?$ /research/safe-and-responsible-computing/ [R=301,L]
+  RewriteRule ^show-news/57/?$ /research/projects/?thrust_area=sustainability-and-social-development [R=301,L]
+  RewriteRule ^show-news/58/?$ /research/projects/?thrust_area=sustainable-and-scalable-computing [R=301,L]
+  RewriteRule ^show-news/59/?$ /research/projects/?thrust_area=health-and-social-care-technologies [R=301,L]
+  RewriteRule ^show-news/60/?$ /research/projects/?thrust_area=safe-and-responsible-computing [R=301,L]
+  RewriteRule ^show-news/47/?$ /academics/research-fellows/ [R=301,L]
+  RewriteRule ^show-news/43/?$ /academics/research-fellows/ [R=301,L]
+  RewriteRule ^show-news/48/?$ /academics/research-fellows/ [R=301,L]
+  RewriteRule ^show-news/64/?$ /academics/research-fellows/ [R=301,L]
+  RewriteRule ^show-news/63/?$ /research/centres/ [R=301,L]
+  RewriteRule ^phd/?$ /academics/phd/ [R=301,L]
+  RewriteRule ^msr/?$ /academics/ms-research/ [R=301,L]
+  RewriteRule ^mtechcs/?$ /academics/mtech-cybersecurity/ [R=301,L]
+  RewriteRule ^admission/?$ /academics/admissions/ [R=301,L]
+  RewriteRule ^how/?$ /academics/admissions/ [R=301,L]
+  RewriteRule ^courses/?$ /academics/courses/ [R=301,L]
+  RewriteRule ^contact/?$ /contact/ [R=301,L]
+  RewriteRule ^public/storage/uploads/placement/SIT\ Brochure\ 2023-24_updated_1688555498\.pdf/?$ /documents/sit-brochure-2023-24.pdf [R=301,L]
+  RewriteRule ^show-news(?:/.*)?$ /news/ [R=301,L]
+  RewriteRule ^public/storage/faculty_images/ - [G,L]
+  RewriteRule ^public/storage/student_images/ - [G,L]
+  # --- END generated redirects ---
+  # trailing slash: serve /path/ from /path/index.html (pre-rendered)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresDefault "access plus 1 month"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2|webp|avif|jpg|png|svg)$">
+    <If "%{REQUEST_URI} =~ m#^/(assets|_img)/#">
+      Header set Cache-Control "public, max-age=31536000, immutable"
+    </If>
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), camera=(), microphone=()"
+</IfModule>

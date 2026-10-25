@@ -1,0 +1,3 @@
+id,date,category,title,summary,body_md,link,image,thrust_area,featured,status,submitted_by
+keep-me,2024-01-01,announcement,Keep me,This row stays.,,,,,FALSE,published,editor@iitd.ac.in
+old-talk,2020-05-01,event,Old talk,This row is superseded.,,,,,FALSE,published,

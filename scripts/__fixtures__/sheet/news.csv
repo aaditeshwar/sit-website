@@ -1,0 +1,5 @@
+Timestamp,Email Address,Headline,Date of the news,Category,One-paragraph summary (shown on cards),Full text (optional; markdown allowed),Link for more information,Image,Image credit / alt text,Thrust area (if any),Faculty / students involved,status,featured,moderator_note,edited_summary
+2026-10-24T00:00:00Z,submitter@iitd.ac.in,SIT launches annual Research-to-Impact Collaboration (RIC) workshops,10/24/2026,Media coverage,Original summary that should not win.,"A paragraph, with more detail.",https://example.com/ric,poster.jpg,Field workshop,"Sustainability and social development, Health and social care",Aaditeshwar Seth; Chahat Bansal,published,TRUE,,Corrected summary for the workshop.
+,someone@iitd.ac.in,Ignore this pending note,2026-01-01,Announcement,Should not appear.,,,,,,,pending,,,
+,editor@iitd.ac.in,Old talk,2020-05-01,Event,This row is superseded.,,,,,,,superseded,,,
+,editor@iitd.ac.in,Keep me,2024-06-15,Announcement,Updated card summary.,,,,,,,published,FALSE,,

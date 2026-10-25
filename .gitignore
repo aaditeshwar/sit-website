@@ -1,0 +1,16 @@
+node_modules/
+.venv/
+web/dist/
+web/public/og/
+web/public/sitemap.xml
+web/src/generated/*
+!web/src/generated/.gitkeep
+.env
+.env.*
+!.env.example
+!.env.deploy.example
+secrets/*
+!secrets/.gitkeep
+data/incoming/
+*.log
+.DS_Store

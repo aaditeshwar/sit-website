@@ -1,0 +1,26 @@
+file,size,sources,note
+images/banners/core-stack-hero.jpg,1024x426,"core-stack.org: Gram sabha meeting + satellite view + classified land-use map + field crew carrying loads + land-cover change chart (2017–2021)",Supplied collage
+images/impact/core-stack-card.jpg,1024x682,"core-stack.org: field visit beside a water structure + satellite view + classified land-use map + land-cover change chart (2017–2021)",Supplied collage
+images/banners/assistech-hero.jpg,1920x800,"assistech.iitd.ac.in: ergonomic-grip.jpg (SmartCane) + assistech.iitd.ac.in: brailon.jpg (tactile graphic) + assistech.iitd.ac.in: team-new.JPG (Assistech team) + assistech.iitd.ac.in: spec-2.jpg (OnBoard, user boarding a bus)",Sources are small (≤ 860 px); request a high-resolution SmartCane-in-use photo
+images/impact/assistech-card.jpg,1200x800,assistech.iitd.ac.in: ergonomic-grip.jpg + assistech.iitd.ac.in: brailon.jpg,Upscaled ~1.7×; replace when possible
+images/banners/gram-vaani-hero.jpg,1024x426,"Wikimedia Commons: 'Tamil rural woman with a mobile phone facility' by Ammalu, CC BY-SA 3.0 + community-radio studio, phone call, broadcast equipment, and equipment repair",Attribution required for the Commons photo (CC BY-SA 3.0)
+images/impact/gram-vaani-card.jpg,1024x682,"Wikimedia Commons: 'Tamil rural woman with a mobile phone facility' by Ammalu, CC BY-SA 3.0 + community-radio studio, phone call, and equipment repair",Attribution required for the Commons photo (CC BY-SA 3.0)
+images/banners/architecture-security-hero.jpg,1920x800,"Wikimedia Commons: 'Intel CE3100 Die Shot (Canmore)' by Cole L, CC BY-SA 2.0 + Wikimedia Commons: NASA FPGA Board Rev4 (NASA MSFC / Firefly Aerospace), public domain",Generic hardware imagery; replace with MARG lab / SIT test bench photo
+images/impact/architecture-security-card.jpg,1200x800,"Wikimedia Commons: 'Macro circuit board' by Ingo Dierking, CC BY-SA 4.0",
+images/banners/cybersecurity-hero.jpg,1920x800,"Wikimedia Commons: 'Switch-and-nest.jpg' (J.smith, English Wikipedia), CC BY-SA 2.5 + Wikimedia Commons: 'Cybersecurity.png' by jaydeep_, CC0","Network rack (left, slightly darkened for overlay text) + padlock visual; replace rack with an SIT security-lab photo"
+images/impact/cybersecurity-card.jpg,1200x800,"Wikimedia Commons: 'Switch-and-nest.jpg' (J.smith, English Wikipedia), CC BY-SA 2.5",Generic network-rack photo; replace with SPRING / CoE-CSIA lab photo
+images/banners/about-hero.jpg,1920x600,sit.iitd.ac.in home-slider/1.jpg (SIT building entrance),
+images/banners/impact-model.jpg,1920x600,"core-stack.org: IndiaSAT LULC banner-img.jpg (satellite view) + core-stack.org: community-discussion.jpg (Commons Connect pilot) + core-stack.org: group-pic-2.jpg (2nd Landscape Solvability Workshop, Dec 2025)",Stage bands use plan.md §7.3 colours; the site may overlay its own labels instead — an unlabelled version is also provided
+images/banners/impact-model-unlabelled.jpg,1920x600,same as impact-model.jpg,Alternative without stage labels
+images/banners/academics-hero.jpg,1920x600,"core-stack.org: group-pic-2.jpg (workshop participants at IIT Delhi, Dec 2025)",Group photo as a stand-in; a seminar or thesis-defence photo would fit better
+images/banners/research-fellows-hero.jpg,1920x600,core-stack.org: pradan.jpg (planning session and field map review with PRADAN),Upscaled ~1.5×; ‘lab + field’ framing; request a mentor-and-student photo
+images/banners/why-sit-hero.jpg,1920x800,"core-stack.org: day-3.jpg (Landscape Solvability Workshop, Nov 2024, SIT building) + assistech.iitd.ac.in: team-new.JPG",People-centred stand-in; a candid whiteboard / prototype photo would be ideal
+images/banners/area-ssd.jpg,1600x900,core-stack.org: IndiaSAT LULC banner-img.jpg (satellite view),
+images/banners/area-ssc.jpg,1600x900,"Wikimedia Commons: 'BalticServers data center' by BalticServers.com, CC BY-SA 3.0",
+images/banners/area-hsc.jpg,1600x900,assistech.iitd.ac.in: rbd-thin.jpg (TacRead) + assistech.iitd.ac.in: ergonomic-grip.jpg + assistech.iitd.ac.in: brailon.jpg,Consider adding a medical-imaging or public-health fieldwork photo
+images/banners/area-src.jpg,1600x900,"Wikimedia Commons: 'Cybersecurity.png' by jaydeep_, CC0",
+images/research/thumbs/sustainability-and-social-development.jpg,600x400,core-stack.org: IndiaSAT LULC banner-img.jpg,
+images/research/thumbs/sustainable-and-scalable-computing.jpg,600x400,"Wikimedia Commons: Intel CE3100 die shot by Cole L, CC BY-SA 2.0",
+images/research/thumbs/health-and-social-care-technologies.jpg,600x400,assistech.iitd.ac.in: ergonomic-grip.jpg (SmartCane),
+images/research/thumbs/safe-and-responsible-computing.jpg,600x400,"Wikimedia Commons: 'Cybersecurity.png' by jaydeep_, CC0",
+images/research/safe-and-responsible-computing-1.jpg,1931x680,"Wikimedia Commons: 'BalticServers data center' by BalticServers.com, CC BY-SA 3.0 + Wikimedia Commons: 'Switch-and-nest.jpg' by J.smith, CC BY-SA 2.5",Data centre (left) joined to network switch (right); replaces the SPRING logo

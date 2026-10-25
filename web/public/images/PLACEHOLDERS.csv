@@ -1,0 +1,21 @@
+path,width,height,used_on,brief,request_from,status
+images/banners/core-stack-hero.jpg,1920,800,Home hero slide 1; /impact/core-stack hero,"Landscape photo: a community planning session or field team with a tablet in a rural landscape (watershed, waterbody, farms). People's faces visible, with consent.",CoRE stack team (Prof. Aaditeshwar Seth),supplied
+images/impact/core-stack-card.jpg,1200,800,"Impact cards (home, /impact)","Close-up: CoRE stack / Know Your Landscape map on a phone or tablet in the field, or a striking satellite-derived map.",CoRE stack team,supplied
+images/banners/assistech-hero.jpg,1920,800,Home hero slide 2; /impact/assistech hero,"A blind person using SmartCane on a street, or a student reading a tactile diagram or braille display.",Assistech lab (Prof. P. V. M. Rao / Prof. Rohan Paul),supplied
+images/impact/assistech-card.jpg,1200,800,Impact cards,"SmartCane, DotBook or a tactile STEM book in use; product shot acceptable.",Assistech lab,supplied
+images/banners/gram-vaani-hero.jpg,1920,800,/impact/gram-vaani hero,Rural community members recording or listening on a basic mobile phone; a Mobile Vaani volunteer meeting.,Gram Vaani team,supplied
+images/impact/gram-vaani-card.jpg,1200,800,Impact cards,"A person speaking into a feature phone, or a Mobile Vaani club meeting.",Gram Vaani team,supplied
+images/banners/architecture-security-hero.jpg,1920,800,/impact/computer-architecture hero,"Lab photo: chip, FPGA or development board, students at a test bench; or a macro shot of silicon.",MARG (Prof. Preeti Ranjan Panda),supplied
+images/impact/architecture-security-card.jpg,1200,800,Home and impact cards for Computer architecture,"Board or chip close-up.",MARG (Prof. Preeti Ranjan Panda),supplied
+images/banners/cybersecurity-hero.jpg,1920,800,/impact/cybersecurity hero,"Security lab, network equipment, or students working on cyber-physical systems.",SPRING (Prof. Vireshwar Kumar) / CoE-CSIA,supplied
+images/impact/cybersecurity-card.jpg,1200,800,Home and impact cards for Cybersecurity,"Security lab or a close-up of the work, distinct from the architecture card.",SPRING (Prof. Vireshwar Kumar) / CoE-CSIA,supplied
+images/banners/why-sit-hero.jpg,1920,800,Home hero slide 4; /why-sit hero,"Students and faculty collaborating around a whiteboard or prototype; energetic, candid.",SIT office / student photographers,supplied
+images/banners/about-hero.jpg,1920,600,/about hero,"The SIT building exterior, ideally golden hour, or the atrium with people.",SIT office,supplied
+images/banners/impact-model-unlabelled.jpg,1920,600,/about/how-we-create-impact hero,"Three-part photograph: satellite landscape, a community planning meeting, and a group at the SIT building. No stage labels, so the banner crop does not cut off words.",Website design team,supplied
+images/banners/academics-hero.jpg,1920,600,/academics hero,"Scholars in a seminar, lab or thesis defence.",SIT office / students,supplied
+images/banners/research-fellows-hero.jpg,1920,600,/academics/research-fellows hero,A young researcher working with a mentor.,SIT office,supplied
+images/banners/area-ssd.jpg,1600,900,/research/sustainability-and-social-development banner,"Rural landscape, water and community, or a satellite-derived landscape map.",Thrust-area faculty,supplied
+images/banners/area-ssc.jpg,1600,900,/research/sustainable-and-scalable-computing banner,"Chips, data centres, microtubule microscopy, AR/VR design.",Thrust-area faculty,supplied
+images/banners/area-hsc.jpg,1600,900,/research/health-and-social-care-technologies banner,"Assistive devices, medical imaging with clinicians, public-health fieldwork.",Thrust-area faculty,supplied
+images/banners/area-src.jpg,1600,900,/research/safe-and-responsible-computing banner,"Security lab, network equipment, abstract data-privacy visual.",Thrust-area faculty,supplied
+images/site/og-card.jpg,1200,630,Social sharing card (Open Graph),SIT logo + tagline 'Applying computing to change lives and transform systems' on brand background.,Website design team,placeholder

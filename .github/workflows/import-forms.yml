@@ -1,0 +1,61 @@
+name: Import form submissions
+
+on:
+  schedule:
+    - cron: '30 0 * * *' # 06:00 IST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: import-forms
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Import published rows
+        id: import
+        run: |
+          set -euo pipefail
+          pnpm import:forms | tee "$RUNNER_TEMP/import.log"
+          summary=$(grep '^IMPORT_SUMMARY ' "$RUNNER_TEMP/import.log" | tail -n 1)
+          new=$(printf '%s\n' "$summary" | sed -n 's/.* new=\([0-9]*\).*/\1/p')
+          changed=$(printf '%s\n' "$summary" | sed -n 's/.* changed=\([^ ]*\).*/\1/p')
+          echo "new=${new:-0}" >> "$GITHUB_OUTPUT"
+          echo "changed=${changed:-false}" >> "$GITHUB_OUTPUT"
+
+      - name: Open a pull request
+        if: steps.import.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEW_COUNT: ${{ steps.import.outputs.new }}
+        run: |
+          set -euo pipefail
+          git config user.name "sit-website-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          branch="content/submissions-${GITHUB_RUN_ID}"
+          git checkout -b "$branch"
+          git add -- data
+          if [ -d assets/images ]; then
+            git add -- assets/images
+          fi
+          git commit -m "Content: ${NEW_COUNT} new submissions"
+          git push -u origin HEAD
+          gh pr create \
+            --title "Content: ${NEW_COUNT} new submissions" \
+            --body "Imported published rows from the SIT website submissions sheet."

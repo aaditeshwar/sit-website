@@ -1,0 +1,121 @@
+# Global site configuration — read by the build to produce header, footer, SEO defaults.
+name: "Amar Nath and Shashi Khosla School of Information Technology"
+short_name: "SIT, IIT Delhi"
+acronym: "ANSK-SIT"
+tagline: "Applying computing to change lives and transform systems"
+url: "https://sit.iitd.ac.in"
+logo: "images/logos/sit-website-logo.png"      # TODO: request an SVG / high-resolution logo from the School office
+favicon: "images/logos/favicon.ico"            # TODO: 512px PNG/SVG favicon
+og_image: "images/site/og-card.jpg"             # placeholder — see assets/images/PLACEHOLDERS.csv
+
+theme:                     # IIT Delhi colours retained (see styles/design-tokens.md in the archive)
+  primary: "#C21717"       # IITD red
+  primary_dark: "#8E1010"
+  ink: "#1F2328"
+  body: "#4A4F55"
+  surface: "#FFFFFF"
+  surface_alt: "#F6F4F1"   # warm off-white for alternating bands
+  dark: "#1B1B1F"          # footer / feature bands
+  fonts:
+    heading: "Montserrat"
+    body: "Poppins"
+
+utility_nav:
+  - { label: "IIT Delhi", href: "https://home.iitd.ac.in/" }
+  - { label: "Webmail", href: "https://webmail.iitd.ac.in/roundcube/" }
+  - { label: "Contact", href: "/contact" }
+
+primary_cta: { label: "Apply", href: "/academics/admissions" }
+
+nav:
+  - label: "About"
+    href: "/about"
+    children:
+      - { label: "Who we are", href: "/about" }
+      - { label: "Vision and thrust areas", href: "/about/vision" }
+      - { label: "How we create impact", href: "/about/how-we-create-impact" }
+  - label: "Impact"
+    href: "/impact/core-stack"
+    children:
+      - { label: "CoRE stack", href: "/impact/core-stack" }
+      - { label: "Assistech", href: "/impact/assistech" }
+      - { label: "Gram Vaani", href: "/impact/gram-vaani" }
+      - { label: "Computer architecture", href: "/impact/computer-architecture" }
+      - { label: "Cybersecurity", href: "/impact/cybersecurity" }
+  - label: "Research"
+    href: "/research/projects"
+    children:
+      - { label: "Sustainability and social development", href: "/research/sustainability-and-social-development" }
+      - { label: "Sustainable and scalable computing", href: "/research/sustainable-and-scalable-computing" }
+      - { label: "Health and social care technologies", href: "/research/health-and-social-care-technologies" }
+      - { label: "Safe and responsible computing", href: "/research/safe-and-responsible-computing" }
+      - { label: "Projects", href: "/research/projects" }
+      - { label: "Labs and groups", href: "/research/labs" }
+      - { label: "Centres of Excellence", href: "/research/centres" }
+  - label: "Academics"
+    href: "/academics"
+    children:
+      - { label: "PhD", href: "/academics/phd" }
+      - { label: "MS (Research)", href: "/academics/ms-research" }
+      - { label: "M.Tech. in Cybersecurity", href: "/academics/mtech-cybersecurity" }
+      - { label: "Research Fellows", href: "/academics/research-fellows" }
+      - { label: "Courses", href: "/academics/courses" }
+      - { label: "Admissions", href: "/academics/admissions" }
+      - { label: "FAQ", href: "/academics/faq" }
+  - label: "Why SIT"
+    href: "/why-sit"
+    children:
+      - { label: "For students", href: "/why-sit/students" }
+      - { label: "For faculty and teams", href: "/why-sit/faculty" }
+      - { label: "For partners", href: "/why-sit/partners" }
+  - label: "People"
+    href: "/people"
+    children:
+      - { label: "Faculty", href: "/people/faculty" }
+      - { label: "Students", href: "/people/students" }
+      - { label: "Alumni", href: "/people/alumni" }
+      - { label: "Staff", href: "/people/staff" }
+      - { label: "Advisory Board", href: "/people/advisory-board" }
+  - label: "News & Events"
+    href: "/news"
+    children:
+      - { label: "News", href: "/news" }
+      - { label: "Events", href: "/events" }
+      - { label: "Openings", href: "/openings" }
+
+footer:
+  columns:
+    - title: "Explore"
+      links:
+        - { label: "Impact", href: "/impact/core-stack" }
+        - { label: "Research", href: "/research/projects" }
+        - { label: "Projects", href: "/research/projects" }
+        - { label: "News & Events", href: "/news" }
+    - title: "Join us"
+      links:
+        - { label: "Admissions", href: "/academics/admissions" }
+        - { label: "Research Fellows", href: "/academics/research-fellows" }
+        - { label: "Openings", href: "/openings" }
+        - { label: "Why SIT", href: "/why-sit" }
+    - title: "School"
+      links:
+        - { label: "Faculty", href: "/people/faculty" }
+        - { label: "Alumni", href: "/people/alumni" }
+        - { label: "Courses", href: "/academics/courses" }
+        - { label: "Image credits", href: "/image-credits" }
+  ctas:
+    - { label: "Apply", href: "/academics/admissions" }
+    - { label: "Collaborate", href: "/why-sit/partners" }
+
+contact:
+  address: "Amar Nath and Shashi Khosla School of Information Technology, Indian Institute of Technology Delhi, Hauz Khas, New Delhi 110016, India"
+  phone: "+91 11 2659 6056"
+  email: "eoaesit[@]admin.iitd.ac.in or rajeshk[@]cse.iitd.ac.in"
+  map_embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7009.753137414139!2d77.18843032519435!3d28.54342952981189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1df6b9055fb5%3A0x81c10b266b1ea3c0!2sIndian%20Institute%20of%20Technology%20Delhi!5e0!3m2!1sen!2sin!4v1584627293739!5m2!1sen!2sin"
+
+social:                     # TODO: add if the School has accounts
+  linkedin: "https://www.linkedin.com/company/amar-nath-and-shashi-khosla-school-of-information-technology/"
+  x: ""
+  youtube: ""
+
+copyright: "© {year} Amar Nath and Shashi Khosla School of Information Technology, IIT Delhi"

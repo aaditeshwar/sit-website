@@ -1,0 +1,4 @@
+id,date,category,title,summary,body_md,link,image,thrust_area,featured,status,submitted_by,image_alt,people
+sit-launches-annual-research-to-impact-collaboration-ric,2026-10-24,media,SIT launches annual Research-to-Impact Collaboration (RIC) workshops,Corrected summary for the workshop.,"A paragraph, with more detail.",https://example.com/ric,images/news/sit-launches-annual-research-to-impact-collaboration-ric.jpg,sustainability-and-social-development;health-and-social-care-technologies,TRUE,published,submitter@iitd.ac.in,Field workshop,Aaditeshwar Seth;Chahat Bansal
+keep-me,2024-06-15,announcement,Keep me,Updated card summary.,,,,,FALSE,published,editor@iitd.ac.in,,
+old-talk,2020-05-01,event,Old talk,This row is superseded.,,,,,FALSE,draft,editor@iitd.ac.in,,
