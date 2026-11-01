@@ -1,5 +1,4 @@
 import { areas, impact, news, normalisePath, pages, projects, site } from './content'
-import { publicText } from './editorial'
 import { STAGE_SLUGS, STAGES, type Stage } from './enums'
 
 export type PageMeta = {
@@ -15,16 +14,6 @@ export type PageMeta = {
 }
 
 export type Crumb = { label: string; href: string }
-
-export type Featured = {
-  href: string
-  title: string
-  text?: string
-  image?: string
-  seed: string
-  tint: string
-  stage?: Stage
-}
 
 export function asStage(value: string | undefined): Stage | undefined {
   if (!value) return undefined
@@ -155,48 +144,4 @@ export function breadcrumbsFor(pathname: string, title: string): Crumb[] {
   const last = crumbs[crumbs.length - 1]
   if (!last || last.href !== path) crumbs.push({ label: current, href: path })
   return crumbs
-}
-
-/** A real record to show beside a mega-menu column. */
-export function featuredFor(href: string): Featured | undefined {
-  if (href === '/impact') {
-    const story = [...impact].sort((a, b) => a.order - b.order)[0]
-    if (!story) return undefined
-    const stage = asStage(story.current_stage)
-    return {
-      href: story.route,
-      title: story.title,
-      text: publicText(story.tagline),
-      image: story.card_image,
-      seed: story.slug,
-      tint: tintFor(stage),
-      stage,
-    }
-  }
-
-  if (href === '/research') {
-    const area = [...areas].sort((a, b) => a.order - b.order)[0]
-    if (!area) return undefined
-    return {
-      href: area.route,
-      title: area.short_title,
-      text: publicText(area.summary),
-      image: area.card_image,
-      seed: area.slug,
-      tint: site.theme.primary,
-    }
-  }
-
-  const page =
-    pages.find((item) => item.route === href) ??
-    pages.find((item) => item.hero_image && covers(href, item.route))
-  if (!page) return undefined
-  return {
-    href: page.route,
-    title: page.title,
-    text: publicText(page.description),
-    image: page.hero_image,
-    seed: page.route,
-    tint: site.theme.primary,
-  }
 }

@@ -4,8 +4,6 @@ import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent }
 import { useLocation } from 'react-router-dom'
 import { normalisePath, site } from '../lib/content'
 import { publicHref } from '../lib/url'
-import { featuredFor } from '../lib/document'
-import { StageBadge } from './Badge'
 import { Button } from './Button'
 import { ResponsiveImage } from './ResponsiveImage'
 
@@ -29,8 +27,6 @@ export function Header() {
   const focusPanel = useRef(false)
 
   const openItem = openIndex !== null ? site.nav[openIndex] : undefined
-  const featured = openItem ? featuredFor(openItem.href) : undefined
-
   useEffect(() => {
     const onScroll = () => setShrunk(window.scrollY > 12)
     onScroll()
@@ -280,7 +276,7 @@ export function Header() {
           className="absolute left-0 right-0 top-full z-40 border-t border-line bg-surface shadow-lg"
         >
           {openItem?.children?.length ? (
-            <div className="mx-auto grid max-w-page gap-8 px-6 py-8 lg:grid-cols-[minmax(0,1fr)_280px]">
+            <div className="mx-auto max-w-page px-6 py-8">
               <ul className="grid max-w-xl content-start gap-x-6 gap-y-1 sm:grid-cols-2">
                 {openItem.children.map((child) => (
                   <li key={child.href}>
@@ -294,25 +290,6 @@ export function Header() {
                   </li>
                 ))}
               </ul>
-              {featured ? (
-                <A href={featured.href} className="block rounded-lg border border-line hover:border-primary">
-                  <div className="relative aspect-[3/2] overflow-hidden rounded-t-lg bg-surface-alt">
-                    <ResponsiveImage
-                      src={featured.image}
-                      alt=""
-                      seed={featured.seed}
-                      tint={featured.tint}
-                      fill
-                      sizes="280px"
-                    />
-                  </div>
-                  <div className="space-y-2 p-4">
-                    {featured.stage && featured.stage !== 'ecosystem' ? <StageBadge stage={featured.stage} /> : null}
-                    <p className="font-heading text-[18px] font-semibold leading-snug text-ink">{featured.title}</p>
-                    {featured.text ? <p className="line-clamp-3 text-sm leading-relaxed">{featured.text}</p> : null}
-                  </div>
-                </A>
-              ) : null}
             </div>
           ) : null}
         </div>
