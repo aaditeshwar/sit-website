@@ -43,8 +43,6 @@ sources:
   - "https://www.acm.org/articles/people-of-acm/2019/meenakshi-balakrishnan"
   - "https://www.thebetterindia.com/11954/invention-blind-smartcane-mobility-visually-impaired-innovation/ (June 2014)"
   - "https://biospectrumindia.com/news/101/24841/... (NCAHT launch, 27 June 2024)"
-  - "SIT RIC workshop note, Oct 2026"
-review: "expanded with web research (24 Oct 2026) — VERIFY dates, faculty list and the 19-countries figure"
 ---
 
 ## The problem
@@ -77,7 +75,7 @@ Assistech's journey is SIT's model in action. **A course project** with a clear 
 
 ::metrics
 
-- **SmartCane is used by about 150,000 people** in India and abroad. It is distributed through organisations for blind people, together with the training needed to use it, and is available under the Government of India's ADIP scheme.
+- **SmartCane is used by more than 150,000 people** in India and abroad. It is distributed through organisations for blind people, together with the training needed to use it, and is available under the Government of India's ADIP scheme.
 - **Tactile STEM books** from the Raised Lines Foundation have reached thousands of blind students across India.
 - **National capacity:** in June 2024 the ICMR Director General launched new products from NCAHT at IIT Delhi, including a geometry learning kit, high-quality white canes and an accessible STEM education kit, alongside large-scale trials of SmartCane Version 2 and a new refreshable braille display.
 - **Recognition:** co-founder Prof. M. Balakrishnan received the **2018 ACM Eugene L. Lawler Award for Humanitarian Contributions within Computer Science**, and two national awards for assistive technology. Assistech's work has been covered by *The Wall Street Journal*, *Reuters*, *The Economic Times* and *The Hindu*, among others.

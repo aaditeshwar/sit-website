@@ -34,8 +34,6 @@ links:
 sources:
   - "https://marg.iitd.ac.in/ (accessed 24 Oct 2026)"
   - "SIT website news items (FITT Award, Cadence Tensilica hackathon, VLSI Design awards)"
-  - "SIT RIC workshop note, Oct 2026"
-review: "split from architecture-and-security — architecture half only"
 ---
 
 ## The problem

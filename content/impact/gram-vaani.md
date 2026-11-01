@@ -12,24 +12,24 @@ faculty: ["Aaditeshwar Seth", "Chetan Arora", "Huzur Saran", "Sanjiva Prasad"]
 website: "https://gramvaani.org/"
 metrics:
   - { value: "2009", label: "founded, incubated at IIT Delhi" }
-  - { value: "2.5M+", label: "people reached through Gram Vaani platforms" }        # Feedback Labs profile — VERIFY latest
+  - { value: "4M+", label: "people reached through Gram Vaani platforms" }        # Feedback Labs profile — VERIFY latest
   - { value: "120+", label: "districts with hyper-local Mobile Vaani instances" }    # GSMA case study, 2024
   - { value: "~20", label: "Indian states" }
-  - { value: "12", label: "languages, including marginalised ones such as Desiya" }
-  - { value: "5", label: "countries licensing the platform beyond India: Afghanistan, Ethiopia, Namibia, Pakistan and South Africa" }
+  - { value: "12", label: "local languages" }
+  - { value: "5", label: "countries that have used the platform beyond India: Afghanistan, Ethiopia, Namibia, Pakistan and South Africa" }
 timeline:
   - stage: project
     period: "2008–2010"
-    text: "An ICTD research project at IIT Delhi finds that internet connectivity alone does not empower rural communities, because literacy and digital skills keep intermediaries in control. The team turns to audio, the 'lowest common denominator', and builds GRINS, a radio automation system for community radio stations on commodity hardware, at a fraction of the cost of commercial systems."
+    text: "Born as an ICTD research project at the University of Waterloo (Canada) and IIT Delhi, based on the realization that internet connectivity alone does not empower rural communities because poor literacy and digital skills keep intermediaries in control. The team turned to audio, the 'lowest common denominator', and built GRINS, a radio automation system for community radio stations on commodity hardware, at a fraction of the cost of commercial systems."
   - stage: initiative
     period: "2009–2015"
-    text: "Gram Vaani is founded in 2009 as a social enterprise incubated at IIT Delhi, with early support from the Knight Foundation. When licensing and funding limits hold back community radio, the model moves to mobile phones: Mobile Vaani (2011), a voice-based social network that anyone can join with a free missed call. Backing from foundations including Grand Challenges Canada, Rockefeller and Ford helps build affiliated products."
+    text: "Gram Vaani was founded in 2009 as a social enterprise incubated at IIT Delhi, with early support from the Knight Foundation (USA), to take GRINS to all community radio stations in India. Licensing and funding limits however held back the growth of community radio and the team pivoted to mobile phones: Mobile Vaani was born in 2011, a voice-based participatory media platform that anyone could join with a free missed call, bypassing licensing requirements for community radio. Backing from foundations including Grand Challenges Canada, Sesame Street, the Media Development Investment Fund, Indian Angel Network, Development Alternatives, Population Foundation of India, and many more, helped build affiliated products and enhance the platform."
   - stage: ecosystem
     period: "2015 onwards"
-    text: "Mobile Vaani clubs, run by local volunteers, operate across Bihar, Jharkhand, Madhya Pradesh and beyond. Dozens of civil-society organisations, media houses and government agencies use the platform. Gram Vaani has helped shape how Indian civil society uses media for social accountability, awareness and behaviour-change communication, including during COVID-19 and floods."
+    text: "Mobile Vaani clubs, run by local volunteers, started operating across Bihar, Jharkhand, Madhya Pradesh and beyond. Dozens of civil-society organisations, media houses and government agencies began to use the platform. Gram Vaani has since then helped shape how Indian civil society uses community media for social accountability, awareness and behaviour-change communication, including during COVID-19 and floods and drought events, and has built path-breaking innovations in voice with automated question-answering, content moderation processes, launched speech recognition challenges, generated research on exclusions in digital identity systems and social entitlements, and won global and national awards on technology innovations for societal impact."
 partners:
   - { name: "Knight Foundation", role: "early funder" }
-  - { name: "Grand Challenges Canada; Rockefeller Foundation; Ford Foundation", role: "funders" }
+  - { name: "Grand Challenges Canada; Media Development Investment Fund; Gates Foundation; Indian Angel Network", role: "funders and investors" }
   - { name: "Oxfam India, Population Foundation of India, Breakthrough, CREA, Gram Swaraj Abhiyan and other CSOs", role: "programme partners" }
   - { name: "GSMA; UK International Development", role: "humanitarian language research" }
 links:
@@ -37,18 +37,16 @@ links:
   - { label: "Research: impact pathways of a mobile-based community media platform (arXiv)", href: "https://arxiv.org/abs/2104.07901" }
   - { label: "GSMA case study: Mobile Vaani", href: "https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-for-development/wp-content/uploads/2024/04/Language-and-Digital-Humanitarian-Action_CaseStudies_MobileVaani_R.pdf" }
 sources:
-  - "SIT RIC workshop note, Oct 2026"
   - "https://feedbacklabs.org/gram-vaani"
   - "https://arxiv.org/pdf/2104.07901"
   - "GSMA / CLEAR Global, Language and Digital Humanitarian Action — Mobile Vaani case study (2024)"
   - "https://nextbillion.net/news/the-social-media-network-saving-lives-no-internet-needed"
   - "https://iit-techambit.in/gram-vaani/"
-review: "expanded with web research (24 Oct 2026) — VERIFY figures with Gram Vaani"
 ---
 
 ## The problem
 
-In the late 2000s, the internet was arriving in rural India, but early pilots by the IIT Delhi team showed that **connectivity was not enough**. Low literacy and limited digital skills meant that people relied on intermediaries to go online, and the intermediaries held the power. Mainstream media rarely carried the voices of rural and marginalised communities, so problems such as unpaid wages, closed health centres and failing ration shops went unheard. Community radio offered a local voice, but stations struggled with expensive equipment, licensing and funding.
+In the late 2000s, the internet was arriving in rural India, but early pilots by the IIT Delhi team showed that **connectivity was not enough**. Low literacy and limited digital skills meant that people relied on intermediaries to go online, and the intermediaries held the power. Mainstream media rarely carried the voices of rural and marginalised communities, so problems such as unpaid wages in MGNREGA, closed health centres and failing ration shops went unheard. Community radio offered a local voice, but stations struggled with expensive equipment, licensing and funding.
 
 ## What we built
 
@@ -56,8 +54,8 @@ The team chose **audio**, the medium almost anyone can use, and built technology
 
 - **GRINS** (Gramin Radio Inter Networking System) brought **radio automation, telephony integration and remote maintenance** to community radio stations on commodity hardware, at under a tenth of the cost of comparable systems. It was designed to be locally repairable, because sending technicians to remote villages was not sustainable.
 - **Mobile Vaani** took the model to the mobile phone. A user gives a **missed call** to a local number, the system calls back for free, and an IVR menu lets them **listen to and record voice messages** using the keypad. No smartphone, data plan or literacy is needed. A team of moderators and trained local volunteers reviews every contribution for accuracy and relevance before it is published.
-- **Mobile Vaani clubs** are hyper-local instances, each with its own name and number, run by volunteers recruited to represent different castes, genders and religions. They mobilise new users, report local issues and follow them up with officials.
-- **A platform for partners.** NGOs, media organisations and government agencies use the same cloud-hosted infrastructure to run campaigns, surveys and dialogues on health and nutrition, agriculture, livelihoods, labour rights, gender-based violence, financial inclusion and governance, without setting up their own technology or needing licences.
+- **Mobile Vaani clubs** are hyper-local instances, each with its own name and number, run by volunteers recruited to represent different castes, classes and gender. They mobilise new users, report local issues and follow them up with officials.
+- **A platform for partners.** Civil society organizations, media organisations and government agencies use the same platform to run campaigns, surveys and dialogues on health and nutrition, agriculture, livelihoods, labour rights, gender-based violence, financial inclusion and governance, without setting up their own technology or needing licences.
 
 ## How it grew
 
@@ -71,13 +69,13 @@ Gram Vaani shows the path from project to initiative to ecosystem. A **research 
 
 Research by the team and its partners has traced how Mobile Vaani produces change. Its community content leads to **learning** (informational, reflective, practical and social), which builds **agency**, both online, through collective validation and public pressure, and offline, through mobilisation and engagement with officials. Documented outcomes include:
 
-- **Wages paid:** reports of unpaid rural-employment (MGNREGA) wages, validated by many users on the platform, led to a protest and to local authorities paying the wages.
-- **Services restored:** after a complaint about a suspended mid-day meal, a petition and recorded interviews with officials followed. In another village, volunteer follow-up with the Block Development Officer got hand-pumps working again.
+- **Wages paid:** reports of unpaid rural-employment (MGNREGA) wages, validated by many users on the platform, led to protests and to local authorities paying the wages.
+- **Services restored:** after complaints about a suspended mid-day meal in schools, petitions and recorded interviews with officials followed to conduct inspections. In another village, volunteer follow-up with the Block Development Officer got hand-pumps working again.
 - **Migrant workers protected:** after a migrant worker's death was raised on the platform, the state labour department ran registration camps for migrants.
 - **Corruption exposed:** citizen complaints led to action against corrupt ration-shop officials in Jharkhand.
-- **Crisis response:** the platform has been deployed for communities affected by floods and during the **COVID-19** pandemic, carrying verified information and surfacing needs in local languages.
+- **Crisis response:** the platform was already deployed for communities affected by floods and during the **COVID-19** pandemic, carrying verified information and surfacing needs in local languages.
 
-The model has travelled too: Gram Vaani's platform is licensed for deployments in **Afghanistan, Ethiopia, Namibia, Pakistan and South Africa**.
+The model has travelled too: Gram Vaani's platform has been deployed in **Afghanistan, Ethiopia, Namibia, Pakistan and South Africa**.
 
 ## What's next
 

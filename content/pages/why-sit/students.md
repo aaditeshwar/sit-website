@@ -8,7 +8,7 @@ description: "Financial and research support for SIT PhD and MS (Research) schol
 
 ## Fellowships on top of the institute assistantship
 
-Full-time PhD and MS (Research) scholars are eligible to apply for Fellowships that provide a **monthly stipend over and above their institute assistantship**, for the normal duration of their programme. Selections are made by a selection commmittee and scholars remain eligible provided they maintain good academic standing. 
+Full-time PhD and MS (Research) scholars are eligible to apply for Fellowships that provide a **monthly stipend over and above their institute assistantship**, for the normal duration of their programme. Selections are made by a selection committee and scholars remain eligible provided they maintain good academic standing. 
 
 ## Your own research budget
 

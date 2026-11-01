@@ -30,8 +30,6 @@ links:
 sources:
   - "CoE-CSIA overview, https://web.iitd.ac.in/~rbose/initiative/CoE-CSIA.pdf"
   - "SIT website news items (Batch of 1969 Innovation Fellow Award, ACM CSUR survey)"
-  - "SIT RIC workshop note, Oct 2026"
-review: "split from architecture-and-security — security half only; industry partners still needed from faculty"
 ---
 
 ## The problem
