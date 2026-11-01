@@ -2,7 +2,6 @@
 title: "Centres of Excellence"
 route: "/research/centres"
 description: "Centres of Excellence hosted by or associated with SIT: R-Systems CoE for Applied AI for Sustainable Systems, and CoE-CSIA."
-review: "draft rewrite — from archive pages/coe/r-systems-coe.md (show-news/63)"
 ---
 
 # Centres of Excellence

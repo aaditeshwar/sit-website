@@ -7,7 +7,7 @@ review: "new page — data in data/labs.csv"
 
 # Labs and groups
 
-SIT faculty lead or take part in research groups across IIT Delhi. Many work at the boundary between departments, which is exactly where the School operates.
+SIT faculty lead or take part in research groups across IIT Delhi, especially bridging boundaries between departments.
 
 ::labs{group_by="thrust_area"}
 

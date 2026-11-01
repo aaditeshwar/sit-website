@@ -3,23 +3,22 @@ title: "How we create impact"
 route: "/about/how-we-create-impact"
 description: "SIT's project → initiative → ecosystem model for turning applied computing research into lasting change."
 hero_image: "images/banners/impact-model-unlabelled.jpg"
-review: "new page — distilled from the RIC workshop note (Oct 2026)"
 ---
 
 # From projects to ecosystems
 
-Research papers matter, but on their own they rarely change the world. At SIT we have learned, through Assistech, Gram Vaani, the CoRE stack and our industry-facing work in computer architecture and security, that **lasting impact follows a recognisable path**, and that a School can deliberately help ideas along it.
+Research papers matter, but on their own they rarely change the world. At SIT we have learned, through Assistech, Gram Vaani, the CoRE stack and our industry-facing work in computer architecture and cybersecurity, that **lasting impact follows a recognisable path**, and that a School can deliberately help ideas move on this path.
 
 ```yaml stage-timeline
 - stage: project
   title: "Project"
-  text: "A focused piece of work with a clear line of sight to deployment and adoption. It often starts as a course project, a thesis, or a conversation with a field partner."
+  text: "A focused piece of work with a clear line of sight to deployment and adoption. It often starts as a course project, a thesis, or a conversation with a field partner or industry representative."
 - stage: initiative
   title: "Initiative"
-  text: "Several colleagues take ownership. The work grows into products, platforms and programmes, supported by external funding and partnerships."
+  text: "Several colleagues take ownership. The work grows into products, platforms and programmes, supported by external funding and partnerships, and begins to get used at scale."
 - stage: ecosystem
   title: "Ecosystem"
-  text: "The initiative becomes a core member of its wider ecosystem of government, civil society, industry and other researchers, and helps shape it from within."
+  text: "The initiative becomes a core part of the wider ecosystem of government, civil society, industry and other researchers, and helps transform it from within."
 ```
 
 ## Three principles
@@ -30,7 +29,7 @@ Research papers matter, but on their own they rarely change the world. At SIT we
 
 ## How the School helps ideas along the path
 
-- **For projects:** seed grants for ambitious, high-risk interdisciplinary ideas, and research fellows to staff them.
+- **For projects:** seed grants for ambitious, high-risk interdisciplinary and applied computing ideas, and research fellows to staff them.
 - **For initiatives:** annual Research-to-Impact Collaboration (RIC) workshops where colleagues find co-owners and collaborators, plus flexible grants for collaboration visits and joint activities.
 - **For ecosystems:** shared partnerships and programme staff who represent mature initiatives to government, donors and conferences, plus support for workshops and engagement events.
 

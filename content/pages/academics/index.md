@@ -3,12 +3,11 @@ title: "Academics"
 route: "/academics"
 description: "PhD, MS (Research) and M.Tech. in Cybersecurity programmes, and the Research Fellows pathway at SIT, IIT Delhi."
 hero_image: "images/banners/academics-hero.jpg"   # placeholder (assets/images/PLACEHOLDERS.csv)
-review: "new page"
 ---
 
 # Academics
 
-SIT trains researchers and practitioners who can take computing from an idea to the field. Our programmes are **research-intensive, interdisciplinary and open to candidates from many backgrounds**, not only computer science.
+SIT trains researchers and practitioners who can take computing from an idea to deployment and use. Our programmes are **research-intensive, interdisciplinary and open to candidates from many backgrounds**, not only computer science.
 
 ```yaml programme-cards
 - title: "PhD"
@@ -37,7 +36,7 @@ SIT trains researchers and practitioners who can take computing from an idea to 
 
 ## Support for our scholars
 
-SIT scholars receive School support over and above their institute assistantship, a dedicated research budget for conference travel and publication costs, and help finding accommodation in their first year. [Why SIT →](/why-sit/students)
+SIT scholars are eligible to receive School fellowships over and above their institute assistantship, and everyone has a dedicated research budget for conference travel and publication costs. [Why SIT →](/why-sit/students)
 
 ## Courses
 

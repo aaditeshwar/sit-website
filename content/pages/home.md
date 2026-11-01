@@ -1,9 +1,8 @@
 ---
 title: "Home"
 route: "/"
-description: "The Amar Nath and Shashi Khosla School of Information Technology at IIT Delhi takes applied computing from first idea to deployed initiative to ecosystem-wide change."
+description: "The Amar Nath and Shashi Khosla School of Information Technology at IIT Delhi takes applied computing from project ideas to deployed initiatives to creating ecosystem-wide change."
 layout: home
-review: "draft rewrite — replaces pages/home.md in the archive"
 ---
 
 ::hero-carousel{source="hero-slides"}
@@ -12,7 +11,7 @@ review: "draft rewrite — replaces pages/home.md in the archive"
 
 ## Computing that leaves the lab
 
-The Amar Nath and Shashi Khosla School of Information Technology was set up at IIT Delhi in 2004, with an endowment from alumnus Vinod Khosla (B.Tech., EE 1976), to do something most academic units are not built for: **interdisciplinary, goal-oriented research that ends in real-world change**.
+The Amar Nath and Shashi Khosla School of Information Technology was set up at IIT Delhi in 2004, with an endowment from alumnus Vinod Khosla (B.Tech., EE 1976), for **interdisciplinary, goal-oriented research that ends in real-world change**.
 
 Our faculty come from computer science, electrical engineering, design, biomedical engineering, management and beyond. They work with students, government, civil society and industry on problems where computing can make a decisive difference, from water security in rural India to assistive technology, energy-efficient hardware and safe AI.
 
@@ -20,20 +19,20 @@ Our faculty come from computer science, electrical engineering, design, biomedic
 
 ## How we create change
 
-Ideas at SIT follow a path we have walked many times. A **project** with a clear line of sight to deployment grows into an **initiative** owned by several colleagues, and the initiative becomes part of a wider **ecosystem** that it helps to reshape.
+Ideas at SIT follow a time-tested path we have perfected. A **project** with a clear line of sight to deployment grows into an **initiative** owned by several colleagues, and the initiative becomes part of a wider **ecosystem** that it helps to reshape.
 
 ```yaml stage-cards
 - stage: project
   title: "Start with a problem worth solving"
-  text: "A course project in mobility assistance for blind people became SmartCane, now used by about 150,000 people."
+  text: "A course project in mobility assistance for blind people became SmartCane, now used by more than 150,000 people."
   link: "/impact/assistech"
 - stage: initiative
   title: "Build it together"
-  text: "Several student projects on remote sensing came together as the CoRE stack, now used for water-security planning in more than 2,000 villages."
+  text: "Several student projects on remote sensing came together as the CoRE stack, now being used for water-security planning in more than 2,000 villages."
   link: "/impact/core-stack"
 - stage: ecosystem
   title: "Transform the ecosystem"
-  text: "Gram Vaani has influenced how civil society uses media for social accountability, reaching millions of people."
+  text: "Gram Vaani has influenced how civil society uses media for social accountability, impacting millions of people."
   link: "/impact/gram-vaani"
 ```
 

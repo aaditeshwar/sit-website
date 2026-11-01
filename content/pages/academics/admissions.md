@@ -2,7 +2,6 @@
 title: "Admissions"
 route: "/academics/admissions"
 description: "How to apply to the PhD, MS (Research) and M.Tech. programmes at SIT, IIT Delhi, and current admission notices."
-review: "draft rewrite — merges archive pages/admissions/how-to-apply.md and latest-admissions-info.md"
 ---
 
 # Admissions
@@ -13,7 +12,7 @@ Apply through the **Admissions** section of the [IIT Delhi website](https://home
 
 | Programme | When | Process |
 |---|---|---|
-| **PhD** | Throughout the year. If the portal is closed, ask the SIT office for a PDF form. Interviews twice a year. | Shortlisting, then interviews |
+| **PhD** | Throughout the year. If the portal is closed, ask the SIT office for an offline PDF form. Interviews twice a year. | Shortlisting, then interviews |
 | **MS (Research)** | Twice a year | Shortlisting, then interviews |
 | **M.Tech. in Cybersecurity** | Once a year | Through the COAP portal |
 | **Research Fellows** | Rolling, against specific project positions | [See the programme](/academics/research-fellows) |

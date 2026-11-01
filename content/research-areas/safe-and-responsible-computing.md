@@ -20,7 +20,7 @@ impact_stories: ["cybersecurity"]
 review: "draft rewrite — from archive research/areas/safe-and-responsible-computing.md (show-news/56)"
 ---
 
-As more of life runs on software, networks and AI, failures and attacks have consequences in the physical world. Work in this area makes digital systems **secure, private, verifiable and accountable**, and designs them so that compliance with laws such as India's DPDP Act is built in rather than bolted on.
+As more of life runs on software, networks and AI, failures and attacks have consequences in the physical world. Work in this area makes digital systems **secure, private, verifiable and accountable**, and designs them so that compliance with laws such as India's DPDP Act is inbuilt.
 
 ## Featured work
 

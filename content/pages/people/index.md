@@ -2,7 +2,6 @@
 title: "People"
 route: "/people"
 description: "Faculty, students, alumni and staff of SIT, IIT Delhi."
-review: "draft rewrite — from archive pages/people/index.md"
 ---
 
 # People

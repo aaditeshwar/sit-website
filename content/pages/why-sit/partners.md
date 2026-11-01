@@ -2,12 +2,11 @@
 title: "Partner with SIT"
 route: "/why-sit/partners"
 description: "Work with SIT, IIT Delhi through Centres of Excellence, initiatives, sponsored projects and fellowships."
-review: "new page — placeholder copy for the School to refine"
 ---
 
 # Partner with SIT
 
-Our most successful work has always been built with partners: hospitals, NGOs, government departments, philanthropies and companies who bring real problems and stay long enough to see solutions take hold.
+Our most successful work has always been built with partners: hospitals, civil society organizations, government departments, philanthropies and companies who bring real problems and stay long enough to see solutions take hold.
 
 ## Ways to work with us
 

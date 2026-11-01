@@ -2,7 +2,6 @@
 title: "MS (Research) programme"
 route: "/academics/ms-research"
 description: "MS by Research at SIT, IIT Delhi: a research-oriented master's and a natural route to the PhD."
-review: "draft rewrite — from archive pages/academics/programmes/ms-research.md"
 ---
 
 # MS (Research) programme
@@ -11,9 +10,8 @@ The MS (Research) is a **research-oriented master's programme** with lighter cou
 
 ## Support
 
-- **Institute assistantship** for full-time scholars, with **School support on top of the assistantship** for eligible scholars in good academic standing.
+- **Institute assistantship** for full-time scholars, with **School fellowships on top of the assistantship** for eligible scholars in good academic standing.
 - A **dedicated research budget** for each scholar over the programme, for conference registration, travel and publication costs.
-- **Accommodation support** in the first year when on-campus housing is not available.
 
 [More on student support →](/why-sit/students)
 

@@ -2,7 +2,7 @@
 title: "Contact"
 route: "/contact"
 description: "Contact the Amar Nath and Shashi Khosla School of Information Technology, IIT Delhi."
-review: "draft — TODO: confirm single public email"
+review: "eoaesit[@]admin.iitd.ac.in"
 ---
 
 # Contact us

@@ -15,7 +15,6 @@ subthemes:
   - "Air pollution"
   - "Sustainable agriculture and nature-tech solutions"
 impact_stories: ["core-stack", "gram-vaani"]
-review: "draft rewrite — from archive research/areas/sustainability-and-social-development.md (show-news/53)"
 ---
 
 Climate change, water stress and unequal access to information hit the poorest communities hardest. Work in this area builds **computing that communities and the organisations serving them can actually use**: open datasets, AI models, and decision-support and communication tools, designed with field partners and deployed at scale.
@@ -24,7 +23,7 @@ Climate change, water stress and unequal access to information hit the poorest c
 
 ### CoRE stack: digital public infrastructure for climate adaptation
 
-The CoRE stack is an open technology stack that brings together landscape-scale datasets and algorithms on groundwater stress, biodiversity, land degradation and agricultural patterns. It gives rural communities actionable insights and digital tools to maintain their landscapes sustainably. It applies machine learning and computer vision to satellite and drone data, runs large-scale simulations of hydrology and climate events, and models how landscapes change. The tools are in active deployment and continuous development with a large network of development and ecological-restoration organisations, who help shape use-cases for applied and impactful research.
+The CoRE stack is an open-source technology stack that brings together landscape-scale datasets and algorithms on groundwater stress, biodiversity, land degradation and agricultural patterns. It gives rural communities actionable insights and digital tools to maintain their landscapes sustainably. It applies machine learning and computer vision to satellite and drone data, runs large-scale simulations of hydrology and climate events, and models how landscapes change. The tools are in active deployment and continuous development with a large network of development and ecological-restoration organisations, who help shape use-cases for applied and impactful research.
 
 ![Satellite view beside a land-use classification, with a legend for built-up area, water, trees, cropping and shrubs](/images/research/sustainability-and-social-development-lulc.png)
 
