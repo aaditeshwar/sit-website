@@ -25,4 +25,4 @@ For programme rules, see the latest IIT Delhi [Courses of Study](https://home.ii
 
 ## Projects open to MS (Research) students
 
-::projects{status="open-for-students" seeking="MSR" limit="6"}
+::projects{seeking="MSR" limit="6"}

@@ -40,7 +40,7 @@ The import does not use a Google Cloud account. Publish each response sheet to t
 | 2 | Is this an update to an existing project? If so, paste its current title or page link | Short answer | no | `update_of` | import overwrites the matching `id` |
 | 3 | Thrust area | Multiple choice: the four thrust areas | yes | `thrust_area` | |
 | 4 | Stage | Multiple choice: **Project** (focused work with a line of sight to deployment) / **Initiative** (several co-owners, products/platforms, external funding) / **Ecosystem** (integrated with government / civil society / industry at scale) | yes | `stage` | `project` / `initiative` / `ecosystem` |
-| 5 | Status | Multiple choice: Ongoing / Open for students / Proposed — seeking collaborators or funding / Completed | yes | `status` | `ongoing` / `open-for-students` / `proposed` / `completed` |
+| 5 | Status | Multiple choice: Ongoing / Proposed — seeking collaborators or funding / Completed | yes | `status` | `ongoing` / `proposed` / `completed` |
 | 6 | One-to-two-sentence summary | Paragraph (≤ 300 chars) | yes | `summary` | |
 | 7 | Detailed description (markdown allowed) | Paragraph | no | `description_md` | generates `/research/projects/<id>` |
 | 8 | Lead and co-faculty | Short answer | yes | `faculty` | `;`-separated IITD email ids (the part before `@`, such as `aseth`). A full address or the person's name also matches. The import stores the email id. The site shows the name from `faculty.csv` |

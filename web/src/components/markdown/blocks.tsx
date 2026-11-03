@@ -799,21 +799,6 @@ function PersonMeta({ row }: { row: Row }) {
   return <p className="text-sm">{text}</p>
 }
 
-function thrustDots(areasOnPerson: string[]): ReactNode {
-  if (!areasOnPerson.length) return null
-  return (
-    <ul className="flex list-none gap-1 p-0">
-      {areasOnPerson.map((slug) => (
-        <li key={slug}>
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary" title={areaLabel(slug)}>
-            <span className="sr-only">{areaLabel(slug)}</span>
-          </span>
-        </li>
-      ))}
-    </ul>
-  )
-}
-
 function PersonName({ name, profile }: { name: string; profile?: string }) {
   const href = publicText(profile) || facultyProfile(name)
   if (!href) return <span>{name}</span>
@@ -879,7 +864,6 @@ function PeopleGrid({ rows, layout }: { rows: Row[]; layout: string }) {
               <PersonMeta row={row} />
               {str(row, 'affiliation') ? <p className="text-sm">{str(row, 'affiliation')}</p> : null}
               {str(row, 'research_interests') ? <p className="mt-1 line-clamp-2 text-sm">{str(row, 'research_interests')}</p> : null}
-              <div className="mt-auto pt-3">{thrustDots(stringList(row.thrust_areas))}</div>
             </div>
           </li>
         )
@@ -1168,8 +1152,8 @@ function Opportunities({ attrs }: BlockProps) {
     { title: pageTitle('/openings'), href: '/openings', rows: select('openings', { status: attrs.openings || 'open' }).slice(0, limit) },
     {
       title: pageTitle('/research/projects'),
-      href: `/research/projects?status=${attrs.projects || 'open-for-students'}`,
-      rows: select('projects', { status: attrs.projects || 'open-for-students' }).slice(0, limit),
+      href: '/research/projects',
+      rows: select('projects', { filter: attrs.projects || 'seeking!=' }).slice(0, limit),
     },
   ]
   if (columns.every((column) => column.rows.length === 0)) return <EmptyNote text={attrs.empty} />

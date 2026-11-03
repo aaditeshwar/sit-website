@@ -48,7 +48,7 @@ Ideas at SIT follow a time-tested path we have perfected. A **project** with a c
 
 ## Opportunities now
 
-::opportunities-band{admissions="current" openings="open" projects="open-for-students" limit="6"}
+::opportunities-band{admissions="current" openings="open" limit="6"}
 
 ## News and events
 

@@ -10,7 +10,7 @@ Content for the new website of the **Amar Nath and Shashi Khosla School of Infor
 | `content/pages/**.md` | every static page; `route:` in front-matter sets the URL | edit directly |
 | `content/impact/*.md` | the four flagship impact stories (project → initiative → ecosystem) | edit directly |
 | `content/research-areas/*.md` | the four thrust areas for 2025–2030 | edit directly |
-| `data/projects.csv` | all projects: ongoing, open for students, proposed, completed | **Google Form** + edits |
+| `data/projects.csv` | all projects: ongoing, proposed, completed | **Google Form** + edits |
 | `data/news.csv`, `events.csv`, `openings.csv` | news, events, openings | **Google Forms** |
 | `data/people/*.csv` | faculty, students, alumni, staff, advisory board | edits; alumni via **Google Form** |
 | `data/admissions.csv` | current admission cycle: dates, criteria, shortlists | edit each cycle |
@@ -25,7 +25,7 @@ Content for the new website of the **Amar Nath and Shashi Khosla School of Infor
 ## Writing conventions (short version, full rules in `plan.md` §3 and §6)
 
 - Images in markdown: `![Alt text](/images/folder/file.jpg)`. In CSV and front-matter: `images/folder/file.jpg`.
-- Link to pages by route: `[Projects](/research/projects)`. Filters can go in the URL: `/research/projects?status=open-for-students`.
+- Link to pages by route: `[Projects](/research/projects)`. Filters can go in the URL: `/research/projects?status=ongoing`.
 - Embed live data with a directive on its own line, for example `::projects{thrust_area="safe-and-responsible-computing"}` or `::people{source="faculty" filter="active=TRUE"}`.
 - Small inline structures use a fenced block named after the component (```` ```yaml faq ````), with a YAML list inside.
 - Put anything unfinished in an HTML comment `<!-- TODO: … -->` or mark a value `TODO`. These never show on the live site and are listed in the health report.

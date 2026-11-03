@@ -1,5 +1,5 @@
 import { A } from './A'
-import { Menu, Search, X } from 'lucide-react'
+import { ChevronDown, Menu, Search, X } from 'lucide-react'
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react'
 import { useLocation } from 'react-router-dom'
 import { normalisePath, site } from '../lib/content'
@@ -20,13 +20,12 @@ export function Header() {
   const [mobileSection, setMobileSection] = useState<number | null>(null)
   const [shrunk, setShrunk] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
-  const topRefs = useRef<Array<HTMLAnchorElement | null>>([])
+  const topRefs = useRef<Array<HTMLAnchorElement | HTMLButtonElement | null>>([])
   const panelRef = useRef<HTMLDivElement>(null)
   const drawerRef = useRef<HTMLDivElement>(null)
   const searchRef = useRef<HTMLInputElement>(null)
   const focusPanel = useRef(false)
 
-  const openItem = openIndex !== null ? site.nav[openIndex] : undefined
   useEffect(() => {
     const onScroll = () => setShrunk(window.scrollY > 12)
     onScroll()
@@ -105,7 +104,11 @@ export function Header() {
     topRefs.current[index]?.focus()
   }
 
-  function onTopKeyDown(event: ReactKeyboardEvent<HTMLAnchorElement>, index: number, hasChildren: boolean) {
+  function onTopKeyDown(
+    event: ReactKeyboardEvent<HTMLAnchorElement | HTMLButtonElement>,
+    index: number,
+    hasChildren: boolean,
+  ) {
     const last = site.nav.length - 1
     if (event.key === 'ArrowRight') {
       event.preventDefault()
@@ -200,22 +203,70 @@ export function Header() {
               const hasChildren = Boolean(item.children?.length)
               const active =
                 covers(item.href, path) || item.children?.some((child) => covers(child.href, path))
+              const tone = `${active ? 'text-primary' : 'text-ink'} hover:text-primary`
+              if (!hasChildren) {
+                return (
+                  <A
+                    key={item.href}
+                    ref={(node) => {
+                      topRefs.current[index] = node
+                    }}
+                    href={item.href}
+                    aria-current={path === item.href ? 'page' : undefined}
+                    onMouseEnter={() => setOpenIndex(null)}
+                    onKeyDown={(event) => onTopKeyDown(event, index, false)}
+                    className={`rounded-md px-2.5 py-2 text-sm font-medium ${tone}`}
+                  >
+                    {item.label}
+                  </A>
+                )
+              }
+              const open = openIndex === index
               return (
-                <A
+                <div
                   key={item.href}
-                  ref={(node) => {
-                    topRefs.current[index] = node
-                  }}
-                  href={item.href}
-                  aria-current={path === item.href ? 'page' : undefined}
-                  aria-expanded={hasChildren ? openIndex === index : undefined}
-                  aria-controls={hasChildren ? 'mega-panel' : undefined}
-                  onMouseEnter={() => setOpenIndex(hasChildren ? index : null)}
-                  onKeyDown={(event) => onTopKeyDown(event, index, hasChildren)}
-                  className={`rounded-md px-2.5 py-2 text-sm font-medium ${active ? 'text-primary' : 'text-ink'} hover:text-primary`}
+                  className="relative"
+                  onMouseEnter={() => setOpenIndex(index)}
+                  onMouseLeave={() => setOpenIndex(null)}
                 >
-                  {item.label}
-                </A>
+                  <button
+                    type="button"
+                    ref={(node) => {
+                      topRefs.current[index] = node
+                    }}
+                    aria-expanded={open}
+                    aria-controls={`nav-menu-${index}`}
+                    onClick={() => setOpenIndex(index)}
+                    onKeyDown={(event) => onTopKeyDown(event, index, true)}
+                    className={`inline-flex items-center gap-1 rounded-md px-2.5 py-2 text-sm font-medium ${tone}`}
+                  >
+                    {item.label}
+                    <ChevronDown aria-hidden="true" className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+                  </button>
+                  {open ? (
+                    <div
+                      id={`nav-menu-${index}`}
+                      ref={panelRef}
+                      aria-label={`${item.label} menu`}
+                      onKeyDown={onPanelKeyDown}
+                      className="absolute left-0 top-full z-40 pt-2"
+                    >
+                      <ul className="min-w-56 rounded-md border border-line bg-surface py-2 shadow-lg">
+                        {item.children?.map((child) => (
+                          <li key={child.href}>
+                            <A
+                              href={child.href}
+                              aria-current={path === child.href ? 'page' : undefined}
+                              className="block whitespace-nowrap px-4 py-2 text-sm font-medium text-ink hover:bg-surface-alt hover:text-primary"
+                            >
+                              {child.label}
+                            </A>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
               )
             })}
           </nav>
@@ -266,32 +317,6 @@ export function Header() {
               {mobileOpen ? <X aria-hidden="true" className="h-6 w-6" /> : <Menu aria-hidden="true" className="h-6 w-6" />}
             </button>
           </form>
-        </div>
-        <div
-          id="mega-panel"
-          ref={panelRef}
-          hidden={openIndex === null}
-          aria-label={openItem ? `${openItem.label} menu` : undefined}
-          onKeyDown={onPanelKeyDown}
-          className="absolute left-0 right-0 top-full z-40 border-t border-line bg-surface shadow-lg"
-        >
-          {openItem?.children?.length ? (
-            <div className="mx-auto max-w-page px-6 py-8">
-              <ul className="grid max-w-xl content-start gap-x-6 gap-y-1 sm:grid-cols-2">
-                {openItem.children.map((child) => (
-                  <li key={child.href}>
-                    <A
-                      href={child.href}
-                      aria-current={path === child.href ? 'page' : undefined}
-                      className="block rounded-md px-3 py-2 text-sm font-medium text-ink hover:bg-surface-alt hover:text-primary"
-                    >
-                      {child.label}
-                    </A>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
         </div>
       </div>
       {mobileOpen ? (

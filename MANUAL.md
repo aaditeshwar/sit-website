@@ -123,7 +123,7 @@ Matching rules:
 | Projects | The "update to an existing project" answer: current title, page link, or id. A blank answer creates a new project. Lead and co-faculty are IITD email ids (`aseth`, or `aseth@iitd.ac.in`), separated by `;`, matched to the email column in `data/people/faculty.csv`. The import stores that email id. The site shows the name. A name already in the CSV still matches |
 | Alumni | Full name, matched ignoring capitalisation |
 
-On the projects tab, the form's own Status (`ongoing`, `open-for-students`, `proposed`, `completed`) is the project state. The moderator column `moderation` is `TRUE` or `FALSE` and is stored in the CSV column `published`. `initiative` is the slug of a story under `content/impact/` (`core-stack`, `gram-vaani`, `assistech`, `computer-architecture`, `cybersecurity`). The form question is “Linked to an ongoing initiative”. Leave a cell blank to keep the current CSV value.
+On the projects tab, the form's own Status (`ongoing`, `proposed`, `completed`) is the project state. A project is listed as open to students when “Who are you looking for?” (`seeking`) is filled in. The moderator column `moderation` is `TRUE` or `FALSE` and is stored in the CSV column `published`. `initiative` is the slug of a story under `content/impact/` (`core-stack`, `gram-vaani`, `assistech`, `computer-architecture`, `cybersecurity`). The form question is “Linked to an ongoing initiative”. Leave a cell blank to keep the current CSV value.
 
 Imported images land in:
 

@@ -11,7 +11,7 @@ Join a team working on problems that matter, as a research fellow, research assi
 
 ::openings{source="openings" status="open"}
 
-::projects{status="open-for-students" layout="list" title="Projects open to students"}
+::projects{filter="seeking!=" layout="list" title="Projects open to students"}
 
 ## Closed
 

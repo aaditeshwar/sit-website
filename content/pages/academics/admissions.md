@@ -19,7 +19,7 @@ Apply through the **Admissions** section of the [IIT Delhi website](https://home
 
 ## Before you apply
 
-- Browse [projects open to students](/research/projects?status=open-for-students) and the [faculty](/people/faculty) working in your area of interest. Writing to a potential supervisor about a specific project is encouraged.
+- Browse [projects open to students](/openings) and the [faculty](/people/faculty) working in your area of interest. Writing to a potential supervisor about a specific project is encouraged.
 - Read about the [support SIT offers its scholars](/why-sit/students).
 - See the [FAQ](/academics/faq).
 

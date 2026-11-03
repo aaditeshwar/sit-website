@@ -13,5 +13,4 @@ SIT brings together faculty from departments across IIT Delhi, partner instituti
 - { title: "Students", href: "/people/students", icon: "images/site/icons/people-students.png", count_source: "students" }
 - { title: "Alumni", href: "/people/alumni", icon: "images/site/icons/people-alumni.png", count_source: "alumni" }
 - { title: "Staff", href: "/people/staff", icon: "images/site/icons/people-research-staff.png", count_source: "staff" }
-- { title: "Advisory Board", href: "/people/advisory-board", icon: "images/site/icons/people-advisory-board.png", count_source: "advisory-board" }
 ```

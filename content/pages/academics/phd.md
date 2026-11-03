@@ -30,6 +30,6 @@ For programme rules, see the latest IIT Delhi [Courses of Study](https://home.ii
 
 ## Find a supervisor and a project
 
-::projects{status="open-for-students" seeking="PhD" limit="6"}
+::projects{seeking="PhD" limit="6"}
 
-[All projects open to students →](/research/projects?status=open-for-students)
+[All projects open to students →](/openings)

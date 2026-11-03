@@ -24,6 +24,6 @@ SIT scholars have won the **Prime Minister's Research Fellowship**, the **Google
 
 ## A place to make a difference
 
-Our scholars work on live projects with hospitals, civil society organizations, government and industry, and many see their research deployed while they are still here. [Projects open to students →](/research/projects?status=open-for-students)
+Our scholars work on live projects with hospitals, civil society organizations, government and industry, and many see their research deployed while they are still here. [Projects open to students →](/openings)
 
 [Apply →](/academics/admissions)

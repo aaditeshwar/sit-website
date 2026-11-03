@@ -25,12 +25,11 @@ export const STAGES = {
 export const STAGE_SLUGS = ['project', 'initiative', 'ecosystem'] as const
 export type Stage = (typeof STAGE_SLUGS)[number]
 
-export const PROJECT_STATUSES = ['ongoing', 'open-for-students', 'proposed', 'completed'] as const
+export const PROJECT_STATUSES = ['ongoing', 'proposed', 'completed'] as const
 export type ProjectStatus = (typeof PROJECT_STATUSES)[number]
 
 export const PROJECT_STATUS_LABELS: Record<ProjectStatus, string> = {
   ongoing: 'Ongoing',
-  'open-for-students': 'Open for students',
   proposed: 'Seeking collaborators',
   completed: 'Completed',
 }

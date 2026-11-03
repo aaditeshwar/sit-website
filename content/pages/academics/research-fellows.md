@@ -18,7 +18,7 @@ hero_image: "images/banners/research-fellows-hero.jpg"   # placeholder (assets/i
 
 ## How it works
 
-1. **Find a project.** Faculty float specific research-fellow positions under well-defined projects. Browse [projects open to students](/research/projects?status=open-for-students) and look for **Pre-doc welcome**.
+1. **Find a project.** Faculty float specific research-fellow positions under well-defined projects. Browse [projects open to students](/openings) and look for **Pre-doc welcome**.
 2. **Apply** for that position and contact the faculty mentor. You must also fill in the [Research Fellows form](https://forms.gle/Fgrjtj4cxAhGHa79A) but note that filling the form does not automatically call you for an interview - you must approach via the faculty mentor.
 3. **Do research.** Join the team, learn the research process, and aim to publish.
 4. **Get admitted.** At the end of the fellowship you can be admitted to the PhD or MS (Research) programme on your mentor's recommendation and after a selection interview.
@@ -27,6 +27,6 @@ The fellowship experience can also count towards the experience required for par
 
 ## Projects welcoming research fellows
 
-::projects{status="open-for-students" seeking="Predoc" limit="9"}
+::projects{seeking="Predoc" limit="9"}
 
 ::openings{ids="research-fellows"}

@@ -267,7 +267,7 @@ export function rowsFor(name: string, attrs: Attrs, scope?: MarkdownScope): Row[
       const found =
         select('admissions', { status: attrs.admissions || 'current' }, scope).length +
         select('openings', { status: attrs.openings || 'open' }, scope).length +
-        select('projects', { status: attrs.projects || 'open-for-students' }, scope).length
+        select('projects', { filter: attrs.projects || 'seeking!=' }, scope).length
       return found ? [{}] : []
     }
     case 'incentive-highlights':
