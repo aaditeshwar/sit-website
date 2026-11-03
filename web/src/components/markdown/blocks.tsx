@@ -1200,7 +1200,13 @@ function AdmissionsPanel({ attrs }: BlockProps) {
               return (
                 <li key={`${cycle}-${str(row, 'item')}`} className={prominent && date ? 'grid gap-3 sm:grid-cols-[9rem_minmax(0,1fr)] sm:items-center' : undefined}>
                   {date ? <p className={prominent ? 'font-heading text-[24px] font-semibold leading-tight text-ink' : 'text-sm'}>{date}</p> : null}
-                  {href ? <A href={href}>{str(row, 'item')}</A> : <p>{str(row, 'item')}</p>}
+                  {href ? (
+                    <A className="text-primary underline hover:text-primary-dark" href={href}>
+                      {str(row, 'item')}
+                    </A>
+                  ) : (
+                    <p>{str(row, 'item')}</p>
+                  )}
                 </li>
               )
             })}

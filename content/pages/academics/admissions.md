@@ -17,6 +17,12 @@ Apply through the **Admissions** section of the [IIT Delhi website](https://home
 | **M.Tech. in Cybersecurity** | Once a year | Through the COAP portal |
 | **Research Fellows** | Rolling, against specific project positions | [See the programme](/academics/research-fellows) |
 
+## Current notices
+
+Shortlisting criteria, shortlisted candidates and interview dates for the current admission cycle.
+
+::admissions-panel{status="current"}
+
 ## Before you apply
 
 - Browse [projects open to students](/openings) and the [faculty](/people/faculty) working in your area of interest. Writing to a potential supervisor about a specific project is encouraged.
