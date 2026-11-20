@@ -1148,7 +1148,7 @@ function pageTitle(route: string): string {
 function Opportunities({ attrs }: BlockProps) {
   const limit = Number(attrs.limit) || 6
   const columns = [
-    { title: pageTitle('/academics/admissions'), href: '/academics/admissions', rows: select('admissions', { status: attrs.admissions || 'current' }).slice(0, limit) },
+    { title: pageTitle('/academics/admissions'), href: '/academics/admissions', rows: select('admissions', { status: attrs.admissions || 'current' }) },
     { title: pageTitle('/openings'), href: '/openings', rows: select('openings', { status: attrs.openings || 'open' }).slice(0, limit) },
     {
       title: pageTitle('/research/projects'),
